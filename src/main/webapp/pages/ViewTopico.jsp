@@ -66,6 +66,10 @@
 
 
 	<h2>Respostas:</h2>
+	
+	<c:forEach var="reposta" items="${topico.respostas}">
+		
+	</c:forEach>
 </div>
 
 <%@include file="/WEB-INF/layout_footer.jsp"%>

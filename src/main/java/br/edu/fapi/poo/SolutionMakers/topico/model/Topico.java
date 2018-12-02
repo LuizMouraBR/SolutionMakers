@@ -7,10 +7,16 @@ public class Topico {
 	private String descricao;
 	private String autor_nickname;
 	private String data_postagem;
-	private int respostas;
 	private boolean resolvido;
 	private String pChave1,pChave2,pChave3;
+	private int qtdRespostas;
 	
+	public int getQtdRespostas() {
+		return qtdRespostas;
+	}
+	public void setQtdRespostas(int qtdRespostas) {
+		this.qtdRespostas = qtdRespostas;
+	}
 	public String getpChave1() {
 		return pChave1;
 	}
@@ -58,12 +64,6 @@ public class Topico {
 	}
 	public void setData_postagem(String data_postagem) {
 		this.data_postagem = data_postagem;
-	}
-	public int getRespostas() {
-		return respostas;
-	}
-	public void setRespostas(int respostas) {
-		this.respostas = respostas;
 	}
 	public boolean isResolvido() {
 		return resolvido;

@@ -19,25 +19,36 @@
 	<br>
 
 	<c:if test="${usuario.nickname != null}">
-	<i class="material-icons">
-account_circle
-</i>
 		<img style="float: left; padding: 5px 5px;"
 			src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"
 			alt="Foto do Usuário" width="100px" />
 
 		<h2>
 			<c:out value="${usuario.nickname}"></c:out>
-		</h2> (Administrador)
-		<br>
-		<br>
+		</h2> 
+		
+		<c:choose>
+         
+	         <c:when test = "${usuario.nivelAcesso == 1}">
+	            (Administrador)
+	         </c:when>
+	         <c:when test = "${usuario.nivelAcesso == 2}">
+	            (Operador)
+	         </c:when>
+	         <c:when test = "${usuario.nivelAcesso == 3}">
+	            (Cliente)
+	         </c:when>
+	         <c:when test = "${usuario.nivelAcesso == 4}">
+	            (Usuário)
+	         </c:when>
+	         
+      	</c:choose>
+      
 		<h3>Bio:</h3>
-		<p>
+		<p>"
 			<c:out value="${usuario.bio}"></c:out>
-		</p>
+		</p>"
 	</c:if>
-
-
 
 	<c:if test="${usuario.nickname == null}">
 		<div class="alert alert-danger">

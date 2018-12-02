@@ -56,7 +56,6 @@
 					<c:out value="${topico.descricao}"></c:out>
 				</p>
 				<h6>
-					<c:out value="${topico.respostas}"></c:out>
 					respostas
 				</h6>
 

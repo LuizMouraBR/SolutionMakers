@@ -20,10 +20,21 @@
 			<div class="w3container">
 				<div class="w3-bar w3-green">
 				<a href="/SolutionMakers/controller?acao=index"	class="w3-bar-item w3-button w3-mobile">Home page</a>
+				
+				<c:if test="${empty usuario.logado}">
 					<a href="/SolutionMakers/controller?acao=loginPage"	class="w3-bar-item w3-button w3-mobile">Login</a> 
-					<a href="/SolutionMakers/controller?acao=listarTopicos" class="w3-bar-item w3-button w3-mobile">Tópicos</a> 
-					<a href="#"	class="w3-bar-item w3-button w3-mobile">Discussões</a> 
-					<a href="#"	class="w3-bar-item w3-button w3-mobile">Sobre nós</a>
+				</c:if>
+				
+				<small> <c:out value="${usuario.logado}"></c:out> </small>
+				
+				<c:if test="${usuario.logado}">
+					<a href="/SolutionMakers/controller?acao=loginPage"	class="w3-bar-item w3-button w3-mobile"><c:out value="${usuario.logado}"></c:out> </a> 
+				</c:if>
+				
+				
+				<a href="/SolutionMakers/controller?acao=listarTopicos" class="w3-bar-item w3-button w3-mobile">Tópicos</a> 
+				<a href="#"	class="w3-bar-item w3-button w3-mobile">Discussões</a> 
+				<a href="#"	class="w3-bar-item w3-button w3-mobile">Sobre nós</a>
 					
 					<form action="/SolutionMakers/controller" method="get">
 						<input type="submit" style="float:right" value="Buscar" class="w3-bar-item w3-button w3-mobile w3-light-grey">

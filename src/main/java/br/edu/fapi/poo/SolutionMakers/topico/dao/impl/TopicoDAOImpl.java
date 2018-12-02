@@ -47,6 +47,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 				topico.setpChave1(resultSet.getString("pChave1"));
 				topico.setpChave2(resultSet.getString("pChave2"));
 				topico.setpChave3(resultSet.getString("pChave3"));
+				topico.setQtdRespostas(getQtdRespostas(topico.getId()));
 				
 				listTopicos.add(topico);
 
@@ -88,6 +89,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave1(resultSet.getString("pChave1"));
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
+					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
 
 				}
 
@@ -130,6 +132,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave1(resultSet.getString("pChave1"));
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
+					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
 					
 					listTopicos.add(topico);
 				}
@@ -162,22 +165,39 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave1(resultSet.getString("pChave1"));
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
+					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
 					
 					listTopicos.add(topico);
+				}
+				return listTopicos;
+			} catch (SQLException e) {
+				System.out.println("Erro de conexão: "+e.getMessage());
+			}
+			return listTopicos;
+		}
+		
+		public int getQtdRespostas(int id) {
+
+			int topicoID = (id);
+			int qtdRespostas = 0;
+
+			try (Connection connection = Conexao.connection()) {
+
+				PreparedStatement preparedStatement = connection.prepareStatement("SELECT count(*) FROM `ticket_comentario` WHERE topico_id = "+topicoID);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				
+				while (resultSet.next()) {
+					
+					qtdRespostas = (resultSet.getInt("count(*)"));
 
 				}
 
-				return listTopicos;
+				return qtdRespostas;
 
 			} catch (SQLException e) {
 
 				System.out.println("Erro de conexão: "+e.getMessage());
-
 			}
-
-			
-			return listTopicos;
-
-		}
-		
+		return 0;
+	}
 }

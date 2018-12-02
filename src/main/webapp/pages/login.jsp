@@ -90,12 +90,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	
 	  <div class="input-container">
 	    <i class="fa fa-envelope icon"></i>
-	    <input class="input-field" type="email" placeholder="Digite seu e-mail" name="email">
+	    <input class="input-field" type="email" placeholder="Digite seu e-mail" name="email" required>
 	  </div>
 	  
 	  <div class="input-container">
 	    <i class="fa fa-key icon"></i>
-	    <input class="input-field" type="password" placeholder="Digite sua senha" name="senha">
+	    <input class="input-field" type="password" placeholder="Digite sua senha" name="senha" required>
 	  </div>
 	
 	  <button type="submit" class="btn">Entrar</button>
