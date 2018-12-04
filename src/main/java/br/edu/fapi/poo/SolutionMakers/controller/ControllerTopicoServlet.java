@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.impl.TopicoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
 
@@ -52,9 +53,47 @@ public class ControllerTopicoServlet extends HttpServlet {
 			req.setAttribute("topicos", listTopico);
 			
 			req.getRequestDispatcher("WEB-INF/resultadoBusca.jsp").forward(req, resp);
+		}else if ("resposta".equalsIgnoreCase(acao)) {
+
+			String conteudo = req.getParameter("conteudo");
+			String usuarioNick = req.getParameter("usuarioNick");
+			String topicoids = req.getParameter("topicoId");
+			String usuario  = req.getParameter("usuarioId");
+		
+			int topicoId = Integer.parseInt(topicoids);
+			int usuarioId = Integer.parseInt(usuario);
+			
+			RespostaDAOImpl.adicionarResposta(conteudo,usuarioNick,topicoId,usuarioId);
+						
+			TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
+			Topico topico = topicodaoimpl.buscaPorID(topicoId);
+		
+			req.setAttribute("topico", topico);
+			req.getRequestDispatcher("pages/ViewTopico.jsp").forward(req, resp);
+			
+		}
+		else if ("criarTopico".equalsIgnoreCase(acao)) {
+
+			String titulo = req.getParameter("conteudo");
+			String usuarioNick = req.getParameter("usuarioNick");
+			String topicoids = req.getParameter("topicoId");
+			String usuario  = req.getParameter("usuarioId");
+		
+			int topicoId = Integer.parseInt(topicoids);
+			int usuarioId = Integer.parseInt(usuario);
+			
+			TopicoDAOImpl.criarTopico("sad", usuario, usuario, usuarioId, usuario, usuario, usuario);
+						
+			TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
+			Topico topico = topicodaoimpl.buscaPorID(topicoId);
+		
+			req.setAttribute("topico", topico);
+			
+			req.getRequestDispatcher("pages/ViewTopico.jsp").forward(req, resp);
+			
 		}
 		else {
-			resp.sendRedirect("index.jsp");
+			resp.sendRedirect("index");
 		}
 	}
 }

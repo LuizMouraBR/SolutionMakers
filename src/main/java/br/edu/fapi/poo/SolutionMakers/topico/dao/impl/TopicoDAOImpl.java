@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.fapi.poo.SolutionMakers.conexao.Conexao;
+import br.edu.fapi.poo.SolutionMakers.operacoes.ColetorData;
 import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.TopicoDAO;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
@@ -43,7 +45,8 @@ public class TopicoDAOImpl implements TopicoDAO{
 				topico.setId(resultSet.getInt("id"));
 				topico.setTitulo(resultSet.getString("titulo"));
 				topico.setDescricao(resultSet.getString("descricao"));
-				topico.setAutor_nickname(resultSet.getString("autor_nickname"));				
+				topico.setAutor_nickname(resultSet.getString("autor_nickname"));
+				topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
 				topico.setData_postagem(resultSet.getString("data_postagem"));
 				topico.setResolvido(resultSet.getBoolean("resolvido"));
 				topico.setpChave1(resultSet.getString("pChave1"));
@@ -86,7 +89,8 @@ public class TopicoDAOImpl implements TopicoDAO{
 					
 					topico.setTitulo(resultSet.getString("titulo"));
 					topico.setDescricao(resultSet.getString("descricao"));
-					topico.setAutor_nickname(resultSet.getString("autor_nickname"));				
+					topico.setAutor_nickname(resultSet.getString("autor_nickname"));
+					topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
 					topico.setData_postagem(resultSet.getString("data_postagem"));
 					topico.setResolvido(resultSet.getBoolean("resolvido"));
 					topico.setpChave1(resultSet.getString("pChave1"));
@@ -130,7 +134,8 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setId(resultSet.getInt("id"));
 					topico.setTitulo(resultSet.getString("titulo"));
 					topico.setDescricao(resultSet.getString("descricao"));
-					topico.setAutor_nickname(resultSet.getString("autor_nickname"));				
+					topico.setAutor_nickname(resultSet.getString("autor_nickname"));	
+					topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
 					topico.setData_postagem(resultSet.getString("data_postagem"));
 					topico.setResolvido(resultSet.getBoolean("resolvido"));
 					topico.setpChave1(resultSet.getString("pChave1"));
@@ -164,7 +169,8 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setId(resultSet.getInt("id"));
 					topico.setTitulo(resultSet.getString("titulo"));
 					topico.setDescricao(resultSet.getString("descricao"));
-					topico.setAutor_nickname(resultSet.getString("autor_nickname"));				
+					topico.setAutor_nickname(resultSet.getString("autor_nickname"));
+					topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
 					topico.setData_postagem(resultSet.getString("data_postagem"));
 					topico.setResolvido(resultSet.getBoolean("resolvido"));
 					topico.setpChave1(resultSet.getString("pChave1"));
@@ -206,4 +212,30 @@ public class TopicoDAOImpl implements TopicoDAO{
 			}
 		return 0;
 	}
+		public static void criarTopico(String titulo, String descricao, String autorNickname, int autorNivelAcesso, String pChave1, String pChave2, String pChave3) {
+
+			try (Connection connection = Conexao.connection()) {
+
+				String dataPostagem = ColetorData.datetime();
+
+				PreparedStatement preparedStatement = connection.prepareStatement(
+						"INSERT INTO `ticket` VALUES (null,?,?,?,?,?,0,?,?,?,0)", Statement.RETURN_GENERATED_KEYS);
+				preparedStatement.setString(1, titulo);
+				preparedStatement.setString(2, descricao);
+				preparedStatement.setString(3, autorNickname);
+				preparedStatement.setInt(4, autorNivelAcesso);
+				preparedStatement.setString(5, dataPostagem);
+				preparedStatement.setString(6, pChave1);
+				preparedStatement.setString(7, pChave2);
+				preparedStatement.setString(8, pChave3);
+
+				preparedStatement.executeUpdate();
+
+			} catch (SQLException e) {
+
+				System.out.println("Erro de conexão: " + e.getMessage());
+
+			}
+
+		}
 }

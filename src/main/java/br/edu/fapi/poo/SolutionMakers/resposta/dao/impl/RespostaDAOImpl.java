@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.fapi.poo.SolutionMakers.conexao.Conexao;
+import br.edu.fapi.poo.SolutionMakers.operacoes.ColetorData;
 import br.edu.fapi.poo.SolutionMakers.resposta.dao.RespostaDAO;
 import br.edu.fapi.poo.SolutionMakers.resposta.model.Resposta;
 
@@ -51,6 +53,30 @@ public class RespostaDAOImpl implements RespostaDAO{
 
 		}
 		return null;
+
+	}
+	
+	public static void adicionarResposta(String conteudo, String usuarioNick, int topicoId, int usuarioId) {
+		
+		try (Connection connection = Conexao.connection()) {
+
+			String dataPostagem = ColetorData.datetime();
+
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"INSERT INTO `ticket_comentario` VALUES (null,?,?,?,null,?,null,null)", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setInt(1, topicoId);
+			preparedStatement.setInt(2, usuarioId);
+			preparedStatement.setString(3, conteudo);
+			preparedStatement.setString(4, dataPostagem);
+			
+			
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+
+			System.out.println("Erro de conexão: " + e.getMessage());
+
+		}
 
 	}
 	

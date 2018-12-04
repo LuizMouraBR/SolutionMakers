@@ -106,9 +106,13 @@
 <hr>
 Envie sua resposta:
 <br><br>
-	<form>
-		<textarea placeholder="Digite sua resposta aqui" class="form-control"></textarea><br>
+	<form action="/SolutionMakers/controllerTopico?">
+		<textarea placeholder="Digite sua resposta aqui" class="form-control" name="conteudo"></textarea><br>
 		<button type="submit" class="btn btn-success">Enviar resposta</button>
+		<input type="hidden" value="luizmourabr" name="usuarioNick"/>
+		<input type="hidden" value="${topico.id}" name="topicoId"/>
+		<input type="hidden" value="2" name="usuarioId"/>
+		<input type="hidden" name="acao" value="resposta">
 	</form>
 	<br>
 </div>

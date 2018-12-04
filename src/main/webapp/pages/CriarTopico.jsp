@@ -5,17 +5,17 @@
 	<br>
 	<h1>Criar novo ticket</h1>
 	
-	<form method="post" class="form-group">
+	<form class="form-group" action="/SolutionMakers/controllerTopico?">
 	
-		<label for="nome">Digite o nome do ticket:</label>
-		<input type="text" name="nome" class="form-control" placeholder="Ex: Como apagar todos os campos de um vetor"/>
+		<label for="titulo">Digite o nome do ticket:</label>
+		<input type="text" name="titulo" class="form-control" placeholder="Ex: Como apagar todos os campos de um vetor"/>
 		<br>
 		
 		<label for="nome">Digite uma, duas ou três palavras chave:</label>
 		
-		<div style="width: 30%;"><input type="text" name="p1Chave" class="form-control" placeholder="Ex: .net framework"/></div>
-		<div style="width: 30%;"><input type="text" name="p2Chave" class="form-control" placeholder="Ex: Segurança"/></div>
-		<div style="width: 30%;"><input type="text" name="p3Chave" class="form-control" placeholder="Ex: Minecraft"/></div>
+		<div style="width: 30%;"><input type="text" name="pChave1" class="form-control" placeholder="Ex: .net framework"/></div>
+		<div style="width: 30%;"><input type="text" name="pChave2" class="form-control" placeholder="Ex: Segurança"/></div>
+		<div style="width: 30%;"><input type="text" name="pChave3" class="form-control" placeholder="Ex: Minecraft"/></div>
 		<br>
 		
 		<label for="nome">Digite a descrição do ticket:</label>
@@ -23,6 +23,10 @@
 		<br>
 		
 		<input type="submit" class="btn btn-success" value="Criar ticket"/>
+		
+		<input type="hidden" value="luizmourabr" name="usuarioNick"/>
+		<input type="hidden" value="1" name="usuarioNivelAcesso"/>
+		<input type="hidden" name="acao" value="criarTopico">
 	</form>
 </div>
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2018 às 02:28
+-- Generation Time: 04-Dez-2018 às 23:59
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -149,7 +149,9 @@ INSERT INTO `log_acesso` (`id`, `usuario_email`, `acao_user`, `data_hora`) VALUE
 (65, 'luiz@fapi.edu.br', 'Login', '2018-12-03 22:48:15'),
 (66, 'admin@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-03 23:23:49'),
 (67, 'admin@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-03 23:24:08'),
-(68, 'admin@fapi.edu.br', 'Login', '2018-12-03 23:24:27');
+(68, 'admin@fapi.edu.br', 'Login', '2018-12-03 23:24:27'),
+(69, 'admin@fapi.edu.br', 'Login', '2018-12-04 19:29:28'),
+(70, 'admin@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-04 19:31:20');
 
 -- --------------------------------------------------------
 
@@ -181,6 +183,7 @@ CREATE TABLE `ticket` (
   `titulo` varchar(80) NOT NULL,
   `descricao` varchar(1000) NOT NULL,
   `autor_nickname` varchar(16) NOT NULL,
+  `autor_nivelAceso` int(11) DEFAULT NULL,
   `data_postagem` datetime NOT NULL,
   `resolvido` tinyint(1) DEFAULT NULL,
   `pChave1` varchar(16) DEFAULT NULL,
@@ -193,14 +196,14 @@ CREATE TABLE `ticket` (
 -- Extraindo dados da tabela `ticket`
 --
 
-INSERT INTO `ticket` (`id`, `titulo`, `descricao`, `autor_nickname`, `data_postagem`, `resolvido`, `pChave1`, `pChave2`, `pChave3`, `qtdRespostas`) VALUES
-(1, 'Como programar em Java Servlets?', 'Gostaria de saber como criar um web site utilizando java Servlets para um trabalho da faculdade.', 'LuizMouraBR', '2018-10-09 12:15:14', 0, 'Java', 'Servlets', 'Programação', NULL),
-(2, 'Por que as pessoas insistem em utilizar Dot net?', 'Olá, eu uso Php e amo, com ele eu faço tudo, tudo mesmo. E eu gostaria de saber pq as pessoas não utilizam tanto ele?', 'SilvioSantos666', '2018-10-19 13:23:08', 0, 'Php', 'dot net', NULL, NULL),
-(3, 'Qual o sentido da vida?', 'Ouvi dizer que era 42, mas esse é só um número aleatório que os roteiristas de um filme escolheram :/', 'Bia_Kawaii', '2018-10-19 06:34:24', 0, 'vida', 'me', 'ajuda', NULL),
-(4, 'Por que patos fazem quack?', 'oi tenho uma duvida em relasão aos patos', 'Jub1scr3uz0', '2018-10-19 13:19:13', 0, 'patos', NULL, NULL, NULL),
-(5, 'Por que as pessoas compram iOS?', 'ANDROID SUPERIOR, RUINDOWS, VIVA O LINUX <3', 'MASTER_C0D3R', '2018-10-14 13:26:20', 0, 'LINUX', 'SEMPRE', 'SUPERIOR!!!\n', NULL),
-(20, 'Como deixar de gostar do Php?', 'php >>>>> mundo', 'LuizMouraBR', '2018-10-02 17:28:10', 0, 'Php', 'Programação', NULL, NULL),
-(21, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abc', 'LuizMouraBR', '2018-06-06 00:00:00', 0, 'error', 'error', 'error', NULL);
+INSERT INTO `ticket` (`id`, `titulo`, `descricao`, `autor_nickname`, `autor_nivelAceso`, `data_postagem`, `resolvido`, `pChave1`, `pChave2`, `pChave3`, `qtdRespostas`) VALUES
+(1, 'Como programar em Java Servlets?', 'Gostaria de saber como criar um web site utilizando java Servlets para um trabalho da faculdade.', 'LuizMouraBR', 1, '2018-10-09 12:15:14', 0, 'Java', 'Servlets', 'Programação', NULL),
+(2, 'Por que as pessoas insistem em utilizar Dot net?', 'Olá, eu uso Php e amo, com ele eu faço tudo, tudo mesmo. E eu gostaria de saber pq as pessoas não utilizam tanto ele?', 'SilvioSantos666', 4, '2018-10-19 13:23:08', 0, 'Php', 'dot net', NULL, NULL),
+(3, 'Qual o sentido da vida?', 'Ouvi dizer que era 42, mas esse é só um número aleatório que os roteiristas de um filme escolheram :/', 'Bia_Kawaii', 3, '2018-10-19 06:34:24', 0, 'vida', 'me', 'ajuda', NULL),
+(4, 'Por que patos fazem quack?', 'oi tenho uma duvida em relasão aos patos', 'Jub1scr3uz0', 3, '2018-10-19 13:19:13', 0, 'patos', NULL, NULL, NULL),
+(5, 'Por que as pessoas compram iOS?', 'ANDROID SUPERIOR, RUINDOWS, VIVA O LINUX <3', 'MASTER_C0D3R', 4, '2018-10-14 13:26:20', 0, 'LINUX', 'SEMPRE', 'SUPERIOR!!!\n', NULL),
+(20, 'Como deixar de gostar do Php?', 'php >>>>> mundo', 'LuizMouraBR', 1, '2018-10-02 17:28:10', 0, 'Php', 'Programação', NULL, NULL),
+(21, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abc', 'LuizMouraBR', 1, '2018-06-06 00:00:00', 0, 'error', 'error', 'error', NULL);
 
 -- --------------------------------------------------------
 
@@ -230,7 +233,10 @@ INSERT INTO `ticket_comentario` (`id`, `topico_id`, `usuario_id`, `conteudo`, `i
 (4, 2, 3, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
 (5, 2, 3, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
 (6, 2, 3, 'oi', NULL, '2018-10-22 13:19:23', NULL, NULL),
-(19, 2, 3, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL);
+(19, 2, 3, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
+(20, 2, 2, 'dot net >>>>> ', NULL, '2018-12-04 20:18:55', NULL, NULL),
+(21, 2, 2, 'PATOS', NULL, '2018-12-04 20:21:46', NULL, NULL),
+(22, 4, 2, 'vc s esqueceu de fazer a pergunta mermo kk\r\n', NULL, '2018-12-04 20:22:27', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -329,7 +335,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT for table `log_acesso`
 --
 ALTER TABLE `log_acesso`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `operador`
 --
@@ -344,7 +350,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT for table `ticket_comentario`
 --
 ALTER TABLE `ticket_comentario`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `usuario`
 --

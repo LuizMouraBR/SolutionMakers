@@ -10,12 +10,19 @@ public class Topico {
 	private String titulo;
 	private String descricao;
 	private String autor_nickname;
+	private int autor_nivelAcesso;
 	private String data_postagem;
 	private boolean resolvido;
 	private String pChave1,pChave2,pChave3;
 	private int qtdRespostas;
 	private List<Resposta> respostas;
 	
+	public int getAutor_nivelAcesso() {
+		return autor_nivelAcesso;
+	}
+	public void setAutor_nivelAcesso(int autor_nivelAcesso) {
+		this.autor_nivelAcesso = autor_nivelAcesso;
+	}
 	public List<Resposta> getRespostas() {
 		return respostas;
 	}
