@@ -45,9 +45,9 @@
       	</c:choose>
       
 		<h3>Bio:</h3>
-		<p>"
+		<p><span style="font-family: times; font-size: 50px;">"</span>
 			<c:out value="${usuario.bio}"></c:out>
-		</p>"
+		</p>
 	</c:if>
 
 	<c:if test="${usuario.nickname == null}">

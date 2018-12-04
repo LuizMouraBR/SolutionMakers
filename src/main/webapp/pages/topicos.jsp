@@ -56,7 +56,7 @@
 					<c:out value="${topico.descricao}"></c:out>
 				</p>
 				<h6>
-					respostas
+					<c:out value="${topico.qtdRespostas}"></c:out> respostas
 				</h6> 
 
 			</div>

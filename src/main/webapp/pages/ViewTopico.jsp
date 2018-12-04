@@ -103,16 +103,14 @@
 		</div>
 		<br>
 	</c:forEach>
-	
-	
-	<c:if test="${empty usuario.logado}">
-		Você não está logado
-	</c:if>
-	
-	<c:if test="${usuario.logado}">
-		Olá
-	</c:if>
-	
+<hr>
+Envie sua resposta:
+<br><br>
+	<form>
+		<textarea placeholder="Digite sua resposta aqui" class="form-control"></textarea><br>
+		<button type="submit" class="btn btn-success">Enviar resposta</button>
+	</form>
+	<br>
 </div>
 
 <%@include file="/WEB-INF/layout_footer.jsp"%>
