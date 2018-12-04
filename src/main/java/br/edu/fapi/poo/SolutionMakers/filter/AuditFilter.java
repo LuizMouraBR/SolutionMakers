@@ -22,7 +22,7 @@ public class AuditFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
 		req.setAttribute("usuario.logado", checkUser(req) );
-		System.out.println("Usuário " + checkUser(req) + " está acessando a URI: " + uri);
+		System.out.println("Usuário " + checkUser(req) + " está acessando: " + uri);
 
 		chain.doFilter(request, response);
 	}
@@ -30,7 +30,7 @@ public class AuditFilter implements Filter {
 	private String checkUser(HttpServletRequest req) {
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario.logado");
 		if (usuario == null) {
-			return "<deslogado>";
+			return "<anônimo>";
 		}
 		return usuario.getEmail();
 	}

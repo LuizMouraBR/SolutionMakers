@@ -57,7 +57,7 @@
 				</p>
 				<h6>
 					respostas
-				</h6>
+				</h6> 
 
 			</div>
 		</div>

@@ -1,5 +1,9 @@
 package br.edu.fapi.poo.SolutionMakers.topico.model;
 
+import java.util.List;
+
+import br.edu.fapi.poo.SolutionMakers.resposta.model.Resposta;
+
 public class Topico {
 
 	private int id;
@@ -10,7 +14,14 @@ public class Topico {
 	private boolean resolvido;
 	private String pChave1,pChave2,pChave3;
 	private int qtdRespostas;
+	private List<Resposta> respostas;
 	
+	public List<Resposta> getRespostas() {
+		return respostas;
+	}
+	public void setRespostas(List<Resposta> respostas) {
+		this.respostas = respostas;
+	}
 	public int getQtdRespostas() {
 		return qtdRespostas;
 	}

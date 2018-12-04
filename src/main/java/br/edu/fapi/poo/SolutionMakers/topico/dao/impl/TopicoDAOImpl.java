@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.fapi.poo.SolutionMakers.conexao.Conexao;
+import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.TopicoDAO;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
 
 public class TopicoDAOImpl implements TopicoDAO{
 	
+	static RespostaDAOImpl respostaDAOImpl = new RespostaDAOImpl();
 	
 	//Buscar uma lista de tópicos (TODOS)
 	public List<Topico> listarTodos(String ordem) {
@@ -79,6 +81,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 				Topico topico = new Topico();
 				topico.setId(topicoID);
 				
+				
 				while (resultSet.next()) {
 					
 					topico.setTitulo(resultSet.getString("titulo"));
@@ -90,7 +93,8 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
 					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-
+					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					
 				}
 
 				return topico;
@@ -133,6 +137,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
 					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
+					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
 					
 					listTopicos.add(topico);
 				}
@@ -166,6 +171,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
 					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
+					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
 					
 					listTopicos.add(topico);
 				}

@@ -7,6 +7,13 @@
 	display: flex;
 	color: white;
 }
+.cardResposta{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: white;
+	padding: 30px 20px;
+	border-radius: 4px;"
+	margin: 12px;
+}
 </style>
 <title><c:out value="${topico.titulo}"></c:out> - SolutionMakers</title>
 </head>
@@ -64,12 +71,48 @@
 		</c:if>
 	</div>
 
-
+<hr>
 	<h2>Respostas:</h2>
 	
-	<c:forEach var="reposta" items="${topico.respostas}">
+	<c:if test="${empty topico.respostas}">
+		<div class="alert alert-danger">
+			<p> Não há respostas ainda...			</p>
+			Seja o primeiro :)
+		</div>
+	</c:if>
+	
+	<c:forEach var="resposta" items="${topico.respostas}">
+		<div class="cardResposta">
+		<p style="color: black;">
+		<span class="glyphicon glyphicon-pencil"></span>
+			<c:out value="${resposta.conteudo}"></c:out>
+		</p>
+		<form action="/SolutionMakers/controller?" method="get">
+			<div style="padding: 5px 5px;">
+				<i>por 
+				<input class="btn btn-dark" type="submit" value="${resposta.usuarioNick }">
+				</i>
+			</div>
+			<input type="hidden" value="${resposta.usuarioNick }" name="userNick">
+			<input type="hidden" name="acao" value="conta">
+		</form>
+		<i style="float: right;">
+			<c:out value="${resposta.dataPostagem}"></c:out>
+		</i>
 		
+		</div>
+		<br>
 	</c:forEach>
+	
+	
+	<c:if test="${empty usuario.logado}">
+		Você não está logado
+	</c:if>
+	
+	<c:if test="${usuario.logado}">
+		Olá
+	</c:if>
+	
 </div>
 
 <%@include file="/WEB-INF/layout_footer.jsp"%>
