@@ -11,5 +11,12 @@ public class ColetorData {
 		
 		return timeStamp;
 	}
+	
+	public static String dateExtense() {
+
+		String timeStamp = new SimpleDateFormat("dd/MMM/yyyy").format(Calendar.getInstance().getTime());
+		
+		return timeStamp;
+	}
 
 }

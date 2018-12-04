@@ -12,13 +12,13 @@
 	crossorigin="anonymous">
 <meta charset="UTF-8">
 
-<title>Tópicos - SolutionMakers</title>
+<title>Tickets - SolutionMakers</title>
 </head>
 <body>
 
 	<%@include file="/WEB-INF/layout_header.jsp"%>
 
-	<h2 style="margin-left: 3%;margin-right: 3%; max-width: 700px;">Tópicos:</h2>
+	<h2 style="margin-left: 3%;margin-right: 3%; max-width: 700px;">Tickets:</h2>
 	<br>
 
 	<c:forEach var="topico" items="${topicos}">

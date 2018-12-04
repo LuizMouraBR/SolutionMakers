@@ -31,48 +31,40 @@
 	<!-- Conteúdo em destaque -->
 	  <div class="col-sm-9">
 	  
-		<h1>Soluções para você...</h1>
+		<h1>Acontecendo atualmente... <c:out value="${data}"></c:out> </h1>
 		<br>
 		  
 		<div class="cardPrincipal">
-		<h3>Conteúdo principal</h3>
+		<h3>Bancos digitais são seguros? Veja o que dizem os especialistas</h3>
+		<hr>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-			tincidunt fermentum dolor, at vulputate purus rhoncus quis. Curabitur
-			venenatis ullamcorper urna ac dapibus. Fusce hendrerit faucibus sapien,
-			non tristique ipsum posuere in. Integer viverra odio at libero dapibus
-			facilisis. Proin nec lorem maximus, finibus erat mattis, convallis
-			nisi. Nulla facilisi. Etiam vehicula sapien nec interdum consectetur.
-			Cras consequat est odio, sit amet tempor urna tempor et. Nunc augue
-			purus, pharetra eget mauris a, volutpat dapibus arcu. Fusce a est id
-			est cursus laoreet. Integer malesuada velit sit amet tempor elementum.
-			Sed ut luctus ex. Etiam luctus libero vitae libero posuere posuere in
-			non neque.
-		
+			O mundo das empresas de tecnologia financeira, as fintechs, sofreu um susto na sexta-feira (4), diante das notícias de que o Banco Central determinou a liquidação extrajudicial do banco comercial Neon, parceiro da fintech de mesmo...
 		</p>
-		<form action="#">
+		<form action="https://economia.uol.com.br/noticias/redacao/2018/05/05/bancos-digitais-sao-seguros-veja-o-que-dizem-os-especialistas.htm">
 			<input type="submit" value="Ver mais" class="btn btn-info">
 		</form>	
 		</div>
 		<br>
 		
 		<div class="cardPrincipal">
-		<h3>Conteúdo principal</h3>
+		<h3>Tudo o que você precisa saber sobre as novas placas de vídeo NVidia</h3>
+		<hr>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-			tincidunt fermentum dolor, at vulputate purus rhoncus quis. Curabitur
-			venenatis ullamcorper urna ac dapibus. Fusce hendrerit faucibus sapien,
-			non tristique ipsum posuere in. Integer viverra odio at libero dapibus
-			facilisis. Proin nec lorem maximus, finibus erat mattis, convallis
-			nisi. Nulla facilisi. Etiam vehicula sapien nec interdum consectetur.
-			Cras consequat est odio, sit amet tempor urna tempor et. Nunc augue
-			purus, pharetra eget mauris a, volutpat dapibus arcu. Fusce a est id
-			est cursus laoreet. Integer malesuada velit sit amet tempor elementum.
-			Sed ut luctus ex. Etiam luctus libero vitae libero posuere posuere in
-			non neque.
-		
+			Faz bastante tempo, mas depois de anunciar a arquitetura Pascal em 2014 e lançar as GTX 1070 e 1080 em maio de 2016, a Nvidia finalmente lançou uma nova placa gráfica de topo de linha para gamers. Diga oi para as novas GeForce RTX 2070, 2080 e 2080 Ti. Logo de cara, o nome das novas GPU da empresa indicam algumas grandes mudanças. A 2080 Ti traz a nova ger...
 		</p>
-		<form action="#">
+		<form action="https://gizmodo.uol.com.br/placas-video-nvidia-rtx/">
+			<input type="submit" value="Ver mais" class="btn btn-info">
+		</form>	
+		</div>
+		<br>
+		
+		<div class="cardPrincipal">
+		<h3>SpaceX lança 64 satélites de uma vez</h3>
+		<hr>
+		<p>
+			     Washington, 3 dez 2018 (AFP) - A SpaceX lançou seu foguete Falcon 9 nesta segunda-feira (3), enviando uma carga incomum ao espaço - 64 satélites ao mesmo tempo, um recorde dos EUA. A empresa chefiada pelo bilionário americano Elon Musk registrou mais um marco em sua tentativa de tornar os foguetes mais reutilizáveis, como os aviões: o lançamento usou um propulsor reciclado pela tercei...
+		</p>
+		<form action="https://noticias.uol.com.br/ciencia/ultimas-noticias/afp/2018/12/03/spacex-lanca-64-satelites-de-uma-vez.htm">
 			<input type="submit" value="Ver mais" class="btn btn-info">
 		</form>	
 		</div>

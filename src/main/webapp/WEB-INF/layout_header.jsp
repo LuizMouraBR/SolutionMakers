@@ -20,7 +20,7 @@
 				<div class="w3-bar w3-green">
 				<a href="/SolutionMakers/controller?acao=index"	class="w3-bar-item w3-button w3-mobile">Home page</a>
 				<a href="/SolutionMakers/controller?acao=loginPage"	class="w3-bar-item w3-button w3-mobile">Login</a> 
-				<a href="/SolutionMakers/controller?acao=listarTopicos" class="w3-bar-item w3-button w3-mobile">Tópicos</a> 
+				<a href="/SolutionMakers/controller?acao=listarTopicos" class="w3-bar-item w3-button w3-mobile">Tickets</a> 
 				<a href="#"	class="w3-bar-item w3-button w3-mobile">Discussões</a> 
 				<a href="#"	class="w3-bar-item w3-button w3-mobile">Sobre nós</a>
 					

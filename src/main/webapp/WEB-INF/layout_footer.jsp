@@ -9,9 +9,9 @@
 	<footer>
 	
 		<div style="color:blue; text-align: center;">
-			<a href="#">Sugestões</a> | 
-			<a href="#">Trabalhe conosco</a> | 
-			<a href="#">Ajuda</a>
+			<a href="/SolutionMakers/pages/Sugestao.jsp">Sugestões</a> | 
+			<a href="/SolutionMakers/pages/TrabalheConosco.jsp">Trabalhe conosco</a> | 
+			<a href="/SolutionMakers/pages/Ajuda.jsp">Ajuda</a>
 		</div>
 		<br>
 		<div style="color: white; text-align: center;">
