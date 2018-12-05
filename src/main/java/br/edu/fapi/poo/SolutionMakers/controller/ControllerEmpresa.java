@@ -45,7 +45,7 @@ public class ControllerEmpresa extends HttpServlet{
 			EmpresaDAOImpl.criarEmpresa(nomeEmpresa, razaoSocial, cnpj, endereco);
 		
 			req.setAttribute("empresa", empresa);
-			req.getRequestDispatcher("pages/GerenciarEmpresas.jsp").forward(req, resp);
+			req.getRequestDispatcher("WEB-INF/GerenciarEmpresas.jsp").forward(req, resp);
 			
 		}
 
