@@ -32,8 +32,14 @@
 			<label for="empresa">Digite o nome da Empresa:</label> 
 			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
 		
-			<label for="empresa">Digite uma breve descrição sobre a empresa:</label> 
-			<textarea class="form-control" rows="4" cols="50"></textarea>
+			<label for="empresa">Digite a razão social da Empresa:</label> 
+			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+			
+			<label for="empresa">Digite o CNPJ da Empresa:</label> 
+			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+		
+			<label for="empresa">Digite o endereço da Empresa:</label> 
+			<input class="form-control" rows="4" cols="50" />
 			
 
 		</div>
