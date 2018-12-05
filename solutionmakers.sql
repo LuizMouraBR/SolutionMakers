@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Dez-2018 às 02:17
+-- Generation Time: 05-Dez-2018 às 21:37
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -166,7 +166,32 @@ INSERT INTO `log_acesso` (`id`, `usuario_email`, `acao_user`, `data_hora`) VALUE
 (82, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:54:22'),
 (83, 'luiz@fapi.edu.br', 'Login', '2018-12-04 23:01:32'),
 (84, 'admin@fapi.edu.br', 'Login', '2018-12-04 23:10:30'),
-(85, 'admin@fapi.edu.br', 'Login', '2018-12-04 23:13:15');
+(85, 'admin@fapi.edu.br', 'Login', '2018-12-04 23:13:15'),
+(86, 'luiz@fapi.edu.br', 'Login', '2018-12-04 23:35:16'),
+(87, 'luiz@fapi.edu.br', 'Login', '2018-12-04 23:53:22'),
+(88, 'luiz@fapi.edu.br', 'Login', '2018-12-05 17:23:03'),
+(89, 'admin@fapi.edu.br', 'Login', '2018-12-05 17:49:47'),
+(90, 'luiz@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-05 17:58:20'),
+(91, 'luiz@fapi.edu.br', 'Login', '2018-12-05 17:58:30'),
+(92, 'admin@fapi.edu.br', 'Login', '2018-12-05 18:16:00'),
+(93, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:21:17'),
+(94, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:23:02'),
+(95, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:29:32'),
+(96, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:32:22'),
+(97, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:35:01');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `log_acoes`
+--
+
+CREATE TABLE `log_acoes` (
+  `id` int(11) NOT NULL,
+  `usuario_email` varchar(60) NOT NULL,
+  `acao_user` varchar(50) NOT NULL,
+  `data_hora` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -234,6 +259,7 @@ CREATE TABLE `ticket_comentario` (
   `id` int(9) NOT NULL,
   `topico_id` int(9) DEFAULT NULL,
   `usuario_id` int(9) NOT NULL,
+  `usuarioNivelAcesso` int(11) DEFAULT NULL,
   `conteudo` varchar(255) NOT NULL,
   `isEditada` tinyint(1) DEFAULT NULL,
   `data_postagem` datetime DEFAULT NULL,
@@ -245,20 +271,21 @@ CREATE TABLE `ticket_comentario` (
 -- Extraindo dados da tabela `ticket_comentario`
 --
 
-INSERT INTO `ticket_comentario` (`id`, `topico_id`, `usuario_id`, `conteudo`, `isEditada`, `data_postagem`, `data_edicao`, `editor_id`) VALUES
-(1, 2, 1, 'Oi mundo :)', NULL, '2018-10-22 13:13:21', NULL, NULL),
-(2, 1, 2, 'Comentário 100% automático (quem me dera :/)', NULL, '2018-10-22 14:46:54', NULL, NULL),
-(3, 2, 3, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
-(4, 2, 3, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
-(5, 2, 3, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
-(6, 2, 3, 'oi', NULL, '2018-10-22 13:19:23', NULL, NULL),
-(19, 2, 3, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
-(20, 2, 2, 'dot net >>>>> ', NULL, '2018-12-04 20:18:55', NULL, NULL),
-(21, 2, 2, 'PATOS', NULL, '2018-12-04 20:21:46', NULL, NULL),
-(22, 4, 2, 'vc s esqueceu de fazer a pergunta mermo kk\r\n', NULL, '2018-12-04 20:22:27', NULL, NULL),
-(23, 24, 2, 'que?\r\n', NULL, '2018-12-04 22:03:53', NULL, NULL),
-(24, 22, 2, 'ICollections.AllAsync = null;', NULL, '2018-12-04 22:05:26', NULL, NULL),
-(25, 3, 2, 'na verdade 42 vem do Mochileiro das Galaxias que e um livro', NULL, '2018-12-04 22:14:34', NULL, NULL);
+INSERT INTO `ticket_comentario` (`id`, `topico_id`, `usuario_id`, `usuarioNivelAcesso`, `conteudo`, `isEditada`, `data_postagem`, `data_edicao`, `editor_id`) VALUES
+(1, 2, 1, 1, 'Oi mundo :)', NULL, '2018-10-22 13:13:21', NULL, NULL),
+(2, 1, 2, 1, 'Comentário 100% automático (quem me dera :/)', NULL, '2018-10-22 14:46:54', NULL, NULL),
+(3, 2, 3, 2, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
+(4, 2, 3, 2, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
+(5, 2, 3, 2, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
+(6, 2, 3, 2, 'oi', NULL, '2018-10-22 13:19:23', NULL, NULL),
+(19, 2, 3, 2, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
+(20, 2, 2, 1, 'dot net >>>>> ', NULL, '2018-12-04 20:18:55', NULL, NULL),
+(21, 2, 2, 1, 'PATOS', NULL, '2018-12-04 20:21:46', NULL, NULL),
+(22, 4, 2, 1, 'vc s esqueceu de fazer a pergunta mermo kk\r\n', NULL, '2018-12-04 20:22:27', NULL, NULL),
+(23, 24, 2, 1, 'que?\r\n', NULL, '2018-12-04 22:03:53', NULL, NULL),
+(24, 22, 2, 1, 'ICollections.AllAsync = null;', NULL, '2018-12-04 22:05:26', NULL, NULL),
+(25, 3, 2, 1, 'na verdade 42 vem do Mochileiro das Galaxias que e um livro', NULL, '2018-12-04 22:14:34', NULL, NULL),
+(26, 25, 2, 1, 'Use: <<suaColecao>>.AllAsync.Remove();', NULL, '2018-12-05 17:24:03', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -312,6 +339,12 @@ ALTER TABLE `log_acesso`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `log_acoes`
+--
+ALTER TABLE `log_acoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `operador`
 --
 ALTER TABLE `operador`
@@ -357,7 +390,12 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT for table `log_acesso`
 --
 ALTER TABLE `log_acesso`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+--
+-- AUTO_INCREMENT for table `log_acoes`
+--
+ALTER TABLE `log_acoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `operador`
 --
@@ -372,7 +410,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT for table `ticket_comentario`
 --
 ALTER TABLE `ticket_comentario`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
