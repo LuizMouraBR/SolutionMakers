@@ -21,25 +21,33 @@
 
 	<div class="form-group">
 		<div class="CadastroForm">
+
+
 			<h2>Cadastro</h2>
 			<h6>
 				Para efetuar o cadastro, você deve preencher <b>todos os campos</b>
 				abaixo.
 			</h6>
 
-			<label for="nomeEmpresa">Digite o nome da Empresa:</label> 
-			<input type="text" name="nomeEmpresa" class="form-control" maxlength="50" required /> 
+			<label for="empresa">Digite o nome da Empresa:</label> 
+			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
 		
-			<label for="razaoSocial">Digite a razão social da Empresa:</label> 
-			<input type="text" name="razaoSocial" class="form-control" maxlength="50" required /> 
+			<label for="empresa">Digite a razão social da Empresa:</label> 
+			<input type="text" name="razaoSocial" class="form-control" maxlength="20" required /> 
 			
-			<label for="cnpj">Digite o CNPJ da Empresa:</label> 
-			<input type="text" name="cnpj" class="form-control" maxlength="50" required /> 
+			<label for="empresa">Digite o CNPJ da Empresa:</label> 
+			<input type="text" name="cnpj" class="form-control" maxlength="20" required /> 
 		
 			<label for="empresa">Digite o endereço da Empresa:</label> 
-			<input type="text" class="form-control" required/>
+			<input type="text" name="endereco" class="form-control" maxlength="20" required /> 
 			
-			<button type="submit" class="btn btn-success">Cadastrar</button>
+			<input type="submit" class="btn btn-success" value="Criar Empresa"/>
+		
+			<input type="hidden" value="${usuarioEmSessao.nickname}" name="usuarioNick"/>
+			<input type="hidden" value="${usuarioEmSessao.nivelAcesso}" name="usuarioNivelAcesso"/>
+			<input type="hidden" name="acao" value="cadastraEmpresa">
+			
+
 		</div>
 	</div>
 
