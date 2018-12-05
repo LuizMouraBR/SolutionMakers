@@ -40,7 +40,7 @@
 		<p>
 			O mundo das empresas de tecnologia financeira, as fintechs, sofreu um susto na sexta-feira (4), diante das notícias de que o Banco Central determinou a liquidação extrajudicial do banco comercial Neon, parceiro da fintech de mesmo...
 		</p>
-		<form action="https://economia.uol.com.br/noticias/redacao/2018/05/05/bancos-digitais-sao-seguros-veja-o-que-dizem-os-especialistas.htm">
+		<form action="https://economia.uol.com.br/noticias/redacao/2018/05/05/bancos-digitais-sao-seguros-veja-o-que-dizem-os-especialistas.htm" target="_blank">
 			<input type="submit" value="Ver mais" class="btn btn-info">
 		</form>	
 		</div>
@@ -52,7 +52,7 @@
 		<p>
 			Faz bastante tempo, mas depois de anunciar a arquitetura Pascal em 2014 e lançar as GTX 1070 e 1080 em maio de 2016, a Nvidia finalmente lançou uma nova placa gráfica de topo de linha para gamers. Diga oi para as novas GeForce RTX 2070, 2080 e 2080 Ti. Logo de cara, o nome das novas GPU da empresa indicam algumas grandes mudanças. A 2080 Ti traz a nova ger...
 		</p>
-		<form action="https://gizmodo.uol.com.br/placas-video-nvidia-rtx/">
+		<form action="https://gizmodo.uol.com.br/placas-video-nvidia-rtx/" target="_blank">
 			<input type="submit" value="Ver mais" class="btn btn-info">
 		</form>	
 		</div>
@@ -64,7 +64,7 @@
 		<p>
 			     Washington, 3 dez 2018 (AFP) - A SpaceX lançou seu foguete Falcon 9 nesta segunda-feira (3), enviando uma carga incomum ao espaço - 64 satélites ao mesmo tempo, um recorde dos EUA. A empresa chefiada pelo bilionário americano Elon Musk registrou mais um marco em sua tentativa de tornar os foguetes mais reutilizáveis, como os aviões: o lançamento usou um propulsor reciclado pela tercei...
 		</p>
-		<form action="https://noticias.uol.com.br/ciencia/ultimas-noticias/afp/2018/12/03/spacex-lanca-64-satelites-de-uma-vez.htm">
+		<form action="https://noticias.uol.com.br/ciencia/ultimas-noticias/afp/2018/12/03/spacex-lanca-64-satelites-de-uma-vez.htm" target="_blank">
 			<input type="submit" value="Ver mais" class="btn btn-info">
 		</form>	
 		</div>
