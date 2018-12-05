@@ -86,6 +86,33 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 
 
 	}
+	
+	public static int criarEmpresa(String nomeEmpresa, String razaoSocial,String cnpj,String endereco) {
+
+		try (Connection connection = Conexao.connection()) {
+
+
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"INSERT INTO `empresa` VALUES (null,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, nomeEmpresa);
+			preparedStatement.setString(2, razaoSocial);
+			preparedStatement.setString(3, cnpj);
+			preparedStatement.setString(4, endereco);
+
+
+			preparedStatement.executeUpdate();
+			ResultSet res = preparedStatement.getGeneratedKeys();
+			int result = 0;
+			if (res.first()) {
+				result = res.getInt(1);
+			}
+			return result;
+
+		} catch (SQLException e) {
+			System.out.println("Erro de conexão: " + e.getMessage());
+		}
+		return 0;
+	}
 
 
 
