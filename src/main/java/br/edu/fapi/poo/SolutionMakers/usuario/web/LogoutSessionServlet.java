@@ -23,7 +23,7 @@ public class LogoutSessionServlet extends HttpServlet {
 	protected void doExecute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.getSession().removeAttribute("usuarioEmSessao");
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("index");
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/Deslogar.jsp");
 		requestDispatcher.forward(req, resp);
 
 	}

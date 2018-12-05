@@ -26,6 +26,32 @@
 						<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
 						<input type="hidden" name="acao" value="conta">
 					</form>
+					<c:if test="${usuarioEmSessao.nivelAcesso == 1}">
+						<form style="float: left;" action="/SolutionMakers/controllerTopico?" method="get">
+							<input class="w3-bar-item w3-button w3-mobile" type="submit" value="Relatórios">							
+							<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
+							<input type="hidden" name="acao" value="criarTopico">
+						</form>
+					</c:if>
+					<c:if test="${usuarioEmSessao.nivelAcesso == 2}">
+						<form style="float: left;" action="/SolutionMakers/controllerTopico?" method="get">
+							<input class="w3-bar-item w3-button w3-mobile" type="submit" value="Gerenciar empresas">							
+							<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
+							<input type="hidden" name="acao" value="criarTopico">
+						</form>
+					</c:if>
+					<c:if test="${usuarioEmSessao.nivelAcesso == 3}">
+						<form style="float: left;" action="/SolutionMakers/controllerTopico?" method="get">
+							<input class="w3-bar-item w3-button w3-mobile" type="submit" value="Criar Ticket">							
+							<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
+							<input type="hidden" name="acao" value="criarTopico">
+						</form>
+					</c:if>
+					<form style="float: left;" action="/SolutionMakers/controllerDiscussao?" method="get">
+						<input class="w3-bar-item w3-button w3-mobile" type="submit" value="Criar Discussão">							
+						<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
+						<input type="hidden" name="acao" value="criarDiscussao">
+					</form>
 				</c:if>
 				
 				<c:if test="${usuarioEmSessao == null}">
