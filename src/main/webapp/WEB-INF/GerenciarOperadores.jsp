@@ -7,6 +7,14 @@
 
 <h1>Gerenciar operadores</h1>
 
+<form method="get" action="/SolutionMakers/controller?">
+	<button type="submit" class="btn btn-info" name="acao" value="AdicionarOperador">Adicionar operador</button>
+	<button type="submit" class="btn btn-info" name="acao" value="ExcluirOperador">Excluir operador</button>
+	<button type="submit" class="btn btn-info" name="acao" value="ListarOperador">Listar operadores</button>
+	<button type="submit" class="btn btn-info" name="acao" value="FuncoesOperador">Funções de operador</button>
+</form>
+
+
 </div>
 
 <br>

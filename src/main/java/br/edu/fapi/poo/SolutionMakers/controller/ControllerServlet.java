@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.fapi.poo.SolutionMakers.logAcesso.dao.impl.LogAcessoDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.logAcesso.model.LogAcesso;
+import br.edu.fapi.poo.SolutionMakers.logAcoes.dao.impl.LogAcoesDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.logAcoes.model.LogAcoes;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.impl.TopicoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
 import br.edu.fapi.poo.SolutionMakers.usuario.dao.impl.UsuarioDAOImpl;
@@ -44,13 +48,31 @@ public class ControllerServlet extends HttpServlet {
 		else if("GerenciarOperadores".equalsIgnoreCase(acao)) {
 			req.getRequestDispatcher("WEB-INF/GerenciarOperadores.jsp").forward(req, resp);
 		}
+		else if("AdicionarOperador".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/AdicionarOperador.jsp").forward(req, resp);
+		}
+		else if("ExcluirOperador".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/ExcluirOperador.jsp").forward(req, resp);
+		}
+		else if("ListarOperador".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/ListarOperador.jsp").forward(req, resp);
+		}
+		else if("FuncoesOperador".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);
+		}
 		else if("UsuariosBloqueados".equalsIgnoreCase(acao)) {
 			req.getRequestDispatcher("WEB-INF/UsuariosBloqueados.jsp").forward(req, resp);
 		}
 		else if("LogAcesso".equalsIgnoreCase(acao)) {
+			LogAcessoDAOImpl logacesso = new LogAcessoDAOImpl();
+			List<LogAcesso> logsAcesso = logacesso.listar();	
+			req.setAttribute("logsAcesso", logsAcesso);
 			req.getRequestDispatcher("WEB-INF/LogAcesso.jsp").forward(req, resp);
 		}
 		else if("LogAcoes".equalsIgnoreCase(acao)) {
+			LogAcoesDAOImpl logsAcoesimpl = new LogAcoesDAOImpl();
+			List<LogAcoes> logsAcoes = logsAcoesimpl.listar();	
+			req.setAttribute("logsAcoes", logsAcoes);
 			req.getRequestDispatcher("WEB-INF/LogAcoes.jsp").forward(req, resp);
 		}
 		else if ("resultadoBusca".equalsIgnoreCase(acao)) {
