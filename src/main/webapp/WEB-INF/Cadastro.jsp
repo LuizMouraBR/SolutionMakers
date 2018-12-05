@@ -33,7 +33,7 @@
 			<input type="text" name="nickname" class="form-control" maxlength="16" required /> 
 			
 			<label for="email">Digite seu e-mail:</label> 
-			<input type="email"  name="email" class="form-control" maxlength="70" required /> 
+			<input type="email"  name="email" id="email" onkeyup="validarEmail(this.value)" class="form-control" maxlength="70" required /> 
 			
 			<label for="senha">Digite sua senha:</label> 
 			<input type="password" name="senha" class="form-control" maxlength="16" onblur="verificaSenhas()" id="campo1" required /> 
@@ -49,7 +49,7 @@
 			<textarea class="form-control" rows="4" cols="50"></textarea>
 			
 			<label for="email">Digite seu e-mail:</label> 
-			<input type="email"  name="email" class="form-control" maxlength="70" required /> 
+			<input type="email"  name="email" id="email" onkeyup="validarEmail(this.value)" class="form-control" maxlength="70" required /> 
 			
 			
 		</div>
@@ -81,6 +81,34 @@
 		}
 		
 	}
+	
+	
+    function validarEmail(email) {
+
+        var email = document.getElementById("email");
+        document.getElementById('email').style.color="#000000";
+
+        if(email != null && email.length > 0){
+            var usuario = email.substring(0, email.indexOf("@"));
+            var dominio = email.substring(email.indexOf("@")+ 1, email.length);
+            if ((usuario.length >=1) &&
+                (dominio.length >=3) &&
+                (usuario.search("@")==-1) &&
+                (dominio.search("@")==-1) &&
+                (usuario.search(" ")==-1) &&
+                (dominio.search(" ")==-1) &&
+                (dominio.search(".")!=-1) &&
+                (dominio.indexOf(".") >=1)&&
+                (dominio.lastIndexOf(".") < dominio.length - 1)) {
+            	email.style.borderColor = "green";
+            }
+            else{
+            	email.style.borderColor = "red";
+            }
+        }
+
+    }
+	
 
 </script>
 
