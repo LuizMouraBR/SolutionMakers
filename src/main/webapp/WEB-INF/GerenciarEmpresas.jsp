@@ -33,13 +33,19 @@
 			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
 		
 			<label for="empresa">Digite a razão social da Empresa:</label> 
-			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+			<input type="text" name="razaoSocial" class="form-control" maxlength="20" required /> 
 			
 			<label for="empresa">Digite o CNPJ da Empresa:</label> 
-			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+			<input type="text" name="cnpj" class="form-control" maxlength="20" required /> 
 		
 			<label for="empresa">Digite o endereço da Empresa:</label> 
-			<input class="form-control" rows="4" cols="50" />
+			<input type="text" name="endereco" class="form-control" maxlength="20" required /> 
+			
+			<input type="submit" class="btn btn-success" value="Criar Empresa"/>
+		
+			<input type="hidden" value="${usuarioEmSessao.nickname}" name="usuarioNick"/>
+			<input type="hidden" value="${usuarioEmSessao.nivelAcesso}" name="usuarioNivelAcesso"/>
+			<input type="hidden" name="acao" value="cadastraEmpresa">
 			
 
 		</div>
