@@ -30,10 +30,10 @@
 						<a href="/SolutionMakers/controller?acao=Administracao" class="w3-bar-item w3-button w3-mobile">Adminstração</a> 
 					</c:if>
 					<c:if test="${usuarioEmSessao.nivelAcesso == 1 || usuarioEmSessao.nivelAcesso == 2}">
-						<form style="float: left;" action="/SolutionMakers/controllerTopico?" method="get">
+						<form style="float: left;" action="/SolutionMakers/controllerEmpresa?" method="get">
 							<input class="w3-bar-item w3-button w3-mobile" type="submit" value="Gerenciar empresas">							
 							<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
-							<input type="hidden" name="acao" value="criarTopico">
+							<input type="hidden" name="acao" value="criarEmpresa">
 						</form>
 						
 						<form style="float: left;" action="/SolutionMakers/controllerUsuario?" method="get">
