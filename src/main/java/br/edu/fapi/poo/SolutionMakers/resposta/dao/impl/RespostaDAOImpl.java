@@ -40,6 +40,7 @@ public class RespostaDAOImpl implements RespostaDAO{
 				resposta.setDataEdicao(resultSet.getString("data_edicao"));
 				resposta.setEditorId(resultSet.getInt("editor_id"));
 				resposta.setUsuarioNick(resultSet.getString("nickname"));
+				resposta.setUsuarioNivelAcesso(resultSet.getInt("usuarioNivelAcesso"));
 				
 				listaRespostas.add(resposta);
 
@@ -56,18 +57,19 @@ public class RespostaDAOImpl implements RespostaDAO{
 
 	}
 	
-	public static void adicionarResposta(String conteudo, String usuarioNick, int topicoId, int usuarioId) {
+	public static void adicionarResposta(String conteudo, String usuarioNick, int topicoId, int usuarioId, int usuarioNivelAcesso) {
 		
 		try (Connection connection = Conexao.connection()) {
 
 			String dataPostagem = ColetorData.datetime();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"INSERT INTO `ticket_comentario` VALUES (null,?,?,?,null,?,null,null)", Statement.RETURN_GENERATED_KEYS);
+					"INSERT INTO `ticket_comentario` VALUES (null,?,?,?,?,null,?,null,null)", Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, topicoId);
 			preparedStatement.setInt(2, usuarioId);
-			preparedStatement.setString(3, conteudo);
-			preparedStatement.setString(4, dataPostagem);
+			preparedStatement.setInt(3, usuarioNivelAcesso);
+			preparedStatement.setString(4, conteudo);
+			preparedStatement.setString(5, dataPostagem);
 			
 			
 			preparedStatement.executeUpdate();

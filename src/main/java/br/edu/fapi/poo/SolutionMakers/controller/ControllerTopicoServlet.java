@@ -59,11 +59,13 @@ public class ControllerTopicoServlet extends HttpServlet {
 			String usuarioNick = req.getParameter("usuarioNick");
 			String topicoids = req.getParameter("topicoId");
 			String usuario  = req.getParameter("usuarioId");
-		
+			String usuarioNivelAcessoStr = req.getParameter("usuarioNivelAcesso");
+			
 			int topicoId = Integer.parseInt(topicoids);
 			int usuarioId = Integer.parseInt(usuario);
+			int usuarioNivelAcesso = Integer.parseInt(usuarioNivelAcessoStr);
 			
-			RespostaDAOImpl.adicionarResposta(conteudo,usuarioNick,topicoId,usuarioId);
+			RespostaDAOImpl.adicionarResposta(conteudo,usuarioNick,topicoId,usuarioId, usuarioNivelAcesso);
 						
 			TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
 			Topico topico = topicodaoimpl.buscaPorID(topicoId);

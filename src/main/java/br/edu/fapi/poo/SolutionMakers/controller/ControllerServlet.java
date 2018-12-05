@@ -38,6 +38,21 @@ public class ControllerServlet extends HttpServlet {
 			req.setAttribute("usuario", usuario);
 			req.getRequestDispatcher("pages/MinhaConta.jsp").forward(req, resp);
 		}
+		else if("Administracao".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/Administracao.jsp").forward(req, resp);
+		}
+		else if("GerenciarOperadores".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/GerenciarOperadores.jsp").forward(req, resp);
+		}
+		else if("UsuariosBloqueados".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/UsuariosBloqueados.jsp").forward(req, resp);
+		}
+		else if("LogAcesso".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/LogAcesso.jsp").forward(req, resp);
+		}
+		else if("LogAcoes".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/LogAcoes.jsp").forward(req, resp);
+		}
 		else if ("resultadoBusca".equalsIgnoreCase(acao)) {
 			
 			String busca = req.getParameter("busca");

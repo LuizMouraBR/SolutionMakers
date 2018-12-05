@@ -5,6 +5,7 @@ public class Resposta {
 	private int id;
 	private int usuarioId;
 	private String usuarioNick;
+	private int usuarioNivelAcesso;
 	private String conteudo;
 	private String dataPostagem;
 	private boolean isEditada;
@@ -12,6 +13,12 @@ public class Resposta {
 	private int editorId;
 	
 	
+	public int getUsuarioNivelAcesso() {
+		return usuarioNivelAcesso;
+	}
+	public void setUsuarioNivelAcesso(int usuarioNivelAcesso) {
+		this.usuarioNivelAcesso = usuarioNivelAcesso;
+	}
 	public String getUsuarioNick() {
 		return usuarioNick;
 	}

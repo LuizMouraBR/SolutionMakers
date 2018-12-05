@@ -103,31 +103,66 @@
 		<form action="/SolutionMakers/controller?" method="get">
 			<div style="padding: 5px 5px;">
 				<i>por 
-				<input class="btn btn-dark" type="submit" value="${resposta.usuarioNick }">
+					<input class="btn btn-dark" type="submit" value="${resposta.usuarioNick }">
+				
+				<c:if test="${resposta.usuarioNivelAcesso == 2}">
+					<span class="btn btn-success">OP</span>
+				</c:if>
+				
+				<c:if test="${resposta.usuarioNivelAcesso == 3}">
+					<span class="btn btn-primary">CL</span>
+				</c:if>
+				
+				<c:if test="${resposta.usuarioNivelAcesso == 4}">
+					<span class="btn btn-warning">US</span>
+				</c:if>
+				
 				</i>
 			</div>
 			<input type="hidden" value="${resposta.usuarioNick }" name="userNick">
 			<input type="hidden" name="acao" value="conta">
 		</form>
+		<c:if test="${usuarioEmSessao.nivelAcesso == 1 && resposta.usuarioNivelAcesso == 2}">
+			<form action="/SolutionMakers/controller?" method="get">
+			<div style="padding: 5px 5px;">
+				<input class="btn btn-warning" type="submit" value="Editar resposta">
+			</div>
+			<input type="hidden" value="${resposta.id}" name="respostaId">
+			<input type="hidden" name="acao" value="editarResposta">
+		</form>
+		</c:if>
+		
 		<i style="float: right;">
 			<c:out value="${resposta.dataPostagem}"></c:out>
 		</i>
-		
 		</div>
 		<br>
 	</c:forEach>
 <hr>
+
 Envie sua resposta:
 <br><br>
-	<form action="/SolutionMakers/controllerTopico?">
-		<textarea placeholder="Digite sua resposta aqui" class="form-control" name="conteudo"></textarea><br>
-		<button type="submit" class="btn btn-success">Enviar resposta</button>
-		<input type="hidden" value="${usuarioEmSessao.nickname}" name="usuarioNick"/>
-		<input type="hidden" value="${topico.id}" name="topicoId"/>
-		<input type="hidden" value="${usuarioEmSessao.id}" name="usuarioId"/>
-		<input type="hidden" name="acao" value="resposta">
-	</form>
-	<br>
-</div>
 
+<c:if test="${usuarioEmSessao != null}">
+		<form action="/SolutionMakers/controllerTopico?">
+			<textarea placeholder="Digite sua resposta aqui" class="form-control" name="conteudo"></textarea><br>
+			<button type="submit" class="btn btn-success">Enviar resposta</button>
+			<input type="hidden" value="${usuarioEmSessao.nickname}" name="usuarioNick"/>
+			<input type="hidden" value="${topico.id}" name="topicoId"/>
+			<input type="hidden" value="${usuarioEmSessao.id}" name="usuarioId"/>
+			<input type="hidden" name="acao" value="resposta">
+		</form>
+	<br>
+</c:if>
+
+
+<c:if test="${usuarioEmSessao == null}">
+	<div class="alert alert-warning">
+		Você precisa <a href="/SolutionMakers/pages/login.jsp" style="color: blue;">fazer login</a> para poder responder a este ticket.<br>
+	</div>
+
+</c:if>
+<br>
+
+</div>
 <%@include file="/WEB-INF/layout_footer.jsp"%>
