@@ -74,15 +74,18 @@ public class ControllerTopicoServlet extends HttpServlet {
 		}
 		else if ("criarTopico".equalsIgnoreCase(acao)) {
 
-			String titulo = req.getParameter("conteudo");
+			String titulo = req.getParameter("titulo");
+			String descricao = req.getParameter("descricao");
 			String usuarioNick = req.getParameter("usuarioNick");
-			String topicoids = req.getParameter("topicoId");
-			String usuario  = req.getParameter("usuarioId");
-		
-			int topicoId = Integer.parseInt(topicoids);
-			int usuarioId = Integer.parseInt(usuario);
+			String usuarioNivelAcessoStr = req.getParameter("usuarioNivelAcesso");
 			
-			TopicoDAOImpl.criarTopico("sad", usuario, usuario, usuarioId, usuario, usuario, usuario);
+			String pChave1 = req.getParameter("pChave1");
+			String pChave2 = req.getParameter("pChave2");
+			String pChave3 = req.getParameter("pChave3");
+				
+			int usuarioNivelAcesso = Integer.parseInt(usuarioNivelAcessoStr);
+			
+			int topicoId = TopicoDAOImpl.criarTopico( titulo, descricao, usuarioNick, usuarioNivelAcesso, pChave1, pChave2, pChave3);
 						
 			TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
 			Topico topico = topicodaoimpl.buscaPorID(topicoId);

@@ -21,7 +21,7 @@ public class RespostaDAOImpl implements RespostaDAO{
 
 		try (Connection connection = Conexao.connection()) {
 			
-			String preparedStmt = "SELECT *,usuario.nickname FROM ticket_comentario INNER JOIN usuario ON ticket_comentario.usuario_id = usuario.id WHERE topico_id = " + topicoId;
+			String preparedStmt = "SELECT *,usuario.nickname FROM ticket_comentario INNER JOIN usuario ON ticket_comentario.usuario_id = usuario.id WHERE topico_id = " + topicoId + " ORDER BY data_postagem DESC";
 			
 			PreparedStatement preparedStatement;
 		

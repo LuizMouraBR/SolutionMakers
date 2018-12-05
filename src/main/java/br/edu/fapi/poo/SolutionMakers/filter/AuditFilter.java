@@ -21,30 +21,34 @@ public class AuditFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
-		req.setAttribute("usuario.logado", checkUser(req) );
-		System.out.println("Usuário " + checkUser(req) + " está acessando: " + uri);
-
+		if(checkUser(req) != null) {
+			req.setAttribute("usuarioEmSessao", checkUser(req) );
+			System.out.println("Usuário " + checkUser(req).getEmail() + " está acessando: " + uri);
+		}
+		else {
+			System.out.println("Usuário anônimo está acessando: " + uri);
+		}
 		chain.doFilter(request, response);
 	}
 
-	private String checkUser(HttpServletRequest req) {
-		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario.logado");
-		if (usuario == null) {
-			return "<anônimo>";
+	private Usuario checkUser(HttpServletRequest req) {
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuarioEmSessao");
+		if (usuario != null) {
+			return usuario;
 		}
-		return usuario.getEmail();
+		return null;
 	}
 	
 	public void doGet(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		req.setAttribute("usuario.logado", checkUser(req) );
+		req.setAttribute("usuarioEmSessao", checkUser(req) );
 	}
 	
 	public void doPost(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		req.setAttribute("usuario.logado", checkUser(req) );
+		req.setAttribute("usuarioEmSessao", checkUser(req) );
 	}
 
 }

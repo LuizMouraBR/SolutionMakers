@@ -19,7 +19,19 @@
 			<div class="w3container">
 				<div class="w3-bar w3-green">
 				<a href="/SolutionMakers/controller?acao=index"	class="w3-bar-item w3-button w3-mobile">Home page</a>
-				<a href="/SolutionMakers/controller?acao=loginPage"	class="w3-bar-item w3-button w3-mobile">Login</a> 
+				
+				<c:if test="${usuarioEmSessao != null}">
+					<form style="float: left;" action="/SolutionMakers/controller?" method="get">
+						<input class="w3-bar-item w3-button w3-mobile w3-gray" type="submit" value="${usuarioEmSessao.nickname}">							
+						<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
+						<input type="hidden" name="acao" value="conta">
+					</form>
+				</c:if>
+				
+				<c:if test="${usuarioEmSessao == null}">
+					<a href="/SolutionMakers/controller?acao=loginPage"	class="w3-bar-item w3-button w3-mobile">Login</a> 
+				</c:if>
+				
 				<a href="/SolutionMakers/controller?acao=listarTopicos" class="w3-bar-item w3-button w3-mobile">Tickets</a> 
 				<a href="/SolutionMakers/controller?acao=listarDiscussoes"	class="w3-bar-item w3-button w3-mobile">Discussões</a> 
 				<a href="/SolutionMakers/pages/Sobre.jsp"	class="w3-bar-item w3-button w3-mobile">Sobre nós</a>

@@ -25,10 +25,19 @@
 
 		<h2>
 			<c:out value="${usuario.nickname}"></c:out>
-		</h2> 
 		
+				<c:if test="${usuarioEmSessao != null}">
+					<c:if test="${usuarioEmSessao.nickname == usuario.nickname}">
+						<form action="/SolutionMakers/logout">
+							<input type="submit" value="Deslogar" class="btn btn-danger">
+						</form>
+					</c:if>
+				</c:if>
+		
+		</h2> 
+
 		<c:choose>
-         
+
 	         <c:when test = "${usuario.nivelAcesso == 1}">
 	            (Administrador)
 	         </c:when>

@@ -43,7 +43,7 @@ public class LoginSessionServlet extends HttpServlet {
 
 			usuario = loginService.usuarioLogado(usuario);
 			
-			req.getSession().setAttribute("usuario.logado", usuario);
+			req.getSession().setAttribute("usuarioEmSessao", usuario);
 			
 			// Se houver um ultimo acesso à conta, então ir para uma página.
 			if (usuario.getUltimoAcesso() != null) {

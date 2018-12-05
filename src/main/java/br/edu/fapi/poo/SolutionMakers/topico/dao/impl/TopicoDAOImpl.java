@@ -153,13 +153,13 @@ public class TopicoDAOImpl implements TopicoDAO{
 			return listTopicos;
 		}
 		
-		public List<Topico> listarUltimos10() {
+		public List<Topico> listarUltimos(int qtd) {
 
 			List<Topico> listTopicos = new ArrayList<>();
 
 			try (Connection connection = Conexao.connection()) {
 
-				PreparedStatement preparedStatement = connection.prepareStatement("select * from ticket order by data_postagem desc limit 10");
+				PreparedStatement preparedStatement = connection.prepareStatement("select * from ticket order by data_postagem desc limit " + qtd);
 				ResultSet resultSet = preparedStatement.executeQuery();
 
 				while (resultSet.next()) {
@@ -212,30 +212,35 @@ public class TopicoDAOImpl implements TopicoDAO{
 			}
 		return 0;
 	}
-		public static void criarTopico(String titulo, String descricao, String autorNickname, int autorNivelAcesso, String pChave1, String pChave2, String pChave3) {
+	public static int criarTopico(String titulo, String descricao, String autorNickname, int autorNivelAcesso, String pChave1, String pChave2, String pChave3) {
 
-			try (Connection connection = Conexao.connection()) {
+		try (Connection connection = Conexao.connection()) {
 
-				String dataPostagem = ColetorData.datetime();
+			String dataPostagem = ColetorData.datetime();
 
-				PreparedStatement preparedStatement = connection.prepareStatement(
-						"INSERT INTO `ticket` VALUES (null,?,?,?,?,?,0,?,?,?,0)", Statement.RETURN_GENERATED_KEYS);
-				preparedStatement.setString(1, titulo);
-				preparedStatement.setString(2, descricao);
-				preparedStatement.setString(3, autorNickname);
-				preparedStatement.setInt(4, autorNivelAcesso);
-				preparedStatement.setString(5, dataPostagem);
-				preparedStatement.setString(6, pChave1);
-				preparedStatement.setString(7, pChave2);
-				preparedStatement.setString(8, pChave3);
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"INSERT INTO `ticket` VALUES (null,?,?,?,?,?,0,?,?,?,0)", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, titulo);
+			preparedStatement.setString(2, descricao);
+			preparedStatement.setString(3, autorNickname);
+			preparedStatement.setInt(4, autorNivelAcesso);
+			preparedStatement.setString(5, dataPostagem);
+			preparedStatement.setString(6, pChave1);
+			preparedStatement.setString(7, pChave2);
+			preparedStatement.setString(8, pChave3);
 
-				preparedStatement.executeUpdate();
-
-			} catch (SQLException e) {
-
-				System.out.println("Erro de conexão: " + e.getMessage());
-
+			preparedStatement.executeUpdate();
+			ResultSet res = preparedStatement.getGeneratedKeys();
+			int result = 0;
+			if (res.first()) {
+				result = res.getInt(1);
 			}
+			return result;
 
+		} catch (SQLException e) {
+			System.out.println("Erro de conexão: " + e.getMessage());
 		}
+		return 0;
+	}
+	
 }

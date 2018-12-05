@@ -11,14 +11,13 @@
 		<input type="text" name="titulo" class="form-control" placeholder="Ex: Como apagar todos os campos de um vetor"/>
 		<br>
 		
-		<label for="nome">Digite uma, duas ou três palavras chave:</label>
-		
+		<label for="">Digite uma, duas ou três palavras chave:</label>
 		<div style="width: 30%;"><input type="text" name="pChave1" class="form-control" placeholder="Ex: .net framework"/></div>
 		<div style="width: 30%;"><input type="text" name="pChave2" class="form-control" placeholder="Ex: Segurança"/></div>
 		<div style="width: 30%;"><input type="text" name="pChave3" class="form-control" placeholder="Ex: Minecraft"/></div>
 		<br>
 		
-		<label for="nome">Digite a descrição do ticket:</label>
+		<label for="descricao">Digite a descrição do ticket:</label>
 		<textarea class="form-control" placeholder="Digite a descrição e detalhes do seu ticket para que sua dúvida seja melhor identificada e esclarecida." name="descricao"></textarea>
 		<br>
 		

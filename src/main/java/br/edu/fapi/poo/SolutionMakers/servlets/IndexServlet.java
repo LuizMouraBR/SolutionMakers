@@ -19,7 +19,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
-		req.setAttribute("topicos", topicodaoimpl.listarUltimos10());
+		req.setAttribute("topicos", topicodaoimpl.listarUltimos(6));
 		req.setAttribute("data", ColetorData.dateExtense().toString());
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}

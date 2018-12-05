@@ -26,8 +26,21 @@
 	<div>
 		<form action="/SolutionMakers/controller?" method="get" >
 			<div style="padding: 5px 5px;">
-				<i>por <input class="btn btn-light" type="submit"
-					value="${topico.autor_nickname}">
+				<i>por 
+					<input class="btn btn-dark" type="submit" value="${topico.autor_nickname}">
+					
+					<c:if test="${topico.autor_nivelAcesso == 2}">
+						<span class="btn btn-success">Operador</span>
+					</c:if>
+					
+					<c:if test="${topico.autor_nivelAcesso == 3}">
+						<span class="btn btn-primary">Cliente</span>
+					</c:if>
+					
+					<c:if test="${topico.autor_nivelAcesso == 4}">
+						<span class="btn btn-warning">Usuário</span>
+					</c:if>
+					
 				</i>
 			</div>
 			<input type="hidden" value="${topico.autor_nickname}" name="userNick">

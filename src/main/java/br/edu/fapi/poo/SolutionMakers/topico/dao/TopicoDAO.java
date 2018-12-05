@@ -8,7 +8,7 @@ public interface TopicoDAO {
 	
 	List<Topico> listarTodos(String ordem);
 	
-	List<Topico> listarUltimos10();
+	List<Topico> listarUltimos(int qtd);
 	
 	Topico buscaPorID(int id);
 	

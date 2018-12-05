@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2018 às 23:59
+-- Generation Time: 05-Dez-2018 às 02:17
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -151,7 +151,22 @@ INSERT INTO `log_acesso` (`id`, `usuario_email`, `acao_user`, `data_hora`) VALUE
 (67, 'admin@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-03 23:24:08'),
 (68, 'admin@fapi.edu.br', 'Login', '2018-12-03 23:24:27'),
 (69, 'admin@fapi.edu.br', 'Login', '2018-12-04 19:29:28'),
-(70, 'admin@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-04 19:31:20');
+(70, 'admin@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-04 19:31:20'),
+(71, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:25:20'),
+(72, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:26:48'),
+(73, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:28:15'),
+(74, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:32:30'),
+(75, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:35:06'),
+(76, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:38:02'),
+(77, 'admin@fapi.edu.br', 'Login', '2018-12-04 22:39:46'),
+(78, 'luiz@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-04 22:44:24'),
+(79, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:44:36'),
+(80, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:48:06'),
+(81, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:49:42'),
+(82, 'luiz@fapi.edu.br', 'Login', '2018-12-04 22:54:22'),
+(83, 'luiz@fapi.edu.br', 'Login', '2018-12-04 23:01:32'),
+(84, 'admin@fapi.edu.br', 'Login', '2018-12-04 23:10:30'),
+(85, 'admin@fapi.edu.br', 'Login', '2018-12-04 23:13:15');
 
 -- --------------------------------------------------------
 
@@ -203,7 +218,11 @@ INSERT INTO `ticket` (`id`, `titulo`, `descricao`, `autor_nickname`, `autor_nive
 (4, 'Por que patos fazem quack?', 'oi tenho uma duvida em relasão aos patos', 'Jub1scr3uz0', 3, '2018-10-19 13:19:13', 0, 'patos', NULL, NULL, NULL),
 (5, 'Por que as pessoas compram iOS?', 'ANDROID SUPERIOR, RUINDOWS, VIVA O LINUX <3', 'MASTER_C0D3R', 4, '2018-10-14 13:26:20', 0, 'LINUX', 'SEMPRE', 'SUPERIOR!!!\n', NULL),
 (20, 'Como deixar de gostar do Php?', 'php >>>>> mundo', 'LuizMouraBR', 1, '2018-10-02 17:28:10', 0, 'Php', 'Programação', NULL, NULL),
-(21, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abc', 'LuizMouraBR', 1, '2018-06-06 00:00:00', 0, 'error', 'error', 'error', NULL);
+(21, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ-ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abc', 'LuizMouraBR', 1, '2018-06-06 00:00:00', 0, 'error', 'error', 'error', NULL),
+(22, 'Como apagar todos os campos de um vetor', 'Ol, gostaria de saber como fao pra apagar todos os campos de um vetor do meu programa em C# utilizando ICollections', 'luizmourabr', 1, '2018-12-04 21:51:40', 0, 'Index', 'Arrays', 'C#', 0),
+(23, 'Como fazer alguma coisa', 'Testando coisas', 'luizmourabr', 1, '2018-12-04 21:54:23', 0, 'Teste', 'de', 'Ticket', 0),
+(24, 'a', 'c', 'luizmourabr', 1, '2018-12-04 21:58:03', 0, 'b', 'b', 'b', 0),
+(25, 'Como apagar todos os campos de um vetor', 'Ol, gostaria de saber como apagar todos os campos de um array em C# utilizando ICollections', 'luizmourabr', 1, '2018-12-04 22:00:21', 0, 'Array', 'C#', 'ICollections', 0);
 
 -- --------------------------------------------------------
 
@@ -236,7 +255,10 @@ INSERT INTO `ticket_comentario` (`id`, `topico_id`, `usuario_id`, `conteudo`, `i
 (19, 2, 3, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
 (20, 2, 2, 'dot net >>>>> ', NULL, '2018-12-04 20:18:55', NULL, NULL),
 (21, 2, 2, 'PATOS', NULL, '2018-12-04 20:21:46', NULL, NULL),
-(22, 4, 2, 'vc s esqueceu de fazer a pergunta mermo kk\r\n', NULL, '2018-12-04 20:22:27', NULL, NULL);
+(22, 4, 2, 'vc s esqueceu de fazer a pergunta mermo kk\r\n', NULL, '2018-12-04 20:22:27', NULL, NULL),
+(23, 24, 2, 'que?\r\n', NULL, '2018-12-04 22:03:53', NULL, NULL),
+(24, 22, 2, 'ICollections.AllAsync = null;', NULL, '2018-12-04 22:05:26', NULL, NULL),
+(25, 3, 2, 'na verdade 42 vem do Mochileiro das Galaxias que e um livro', NULL, '2018-12-04 22:14:34', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -261,7 +283,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nickname`, `email`, `senha`, `bio`, `nivelAcesso`, `bloqueado`, `dataCriacao`, `ultimoAcesso`) VALUES
-(1, 'admin', 'admin@fapi.edu.br', '99999', NULL, 1, 0, '2018-10-19', '2018-10-10 00:00:00'),
+(1, 'admin', 'admin@fapi.edu.br', '99999', 'O manda chuva do pedaço XD', 1, 0, '2018-10-19', '2018-10-10 00:00:00'),
 (2, 'luizmourabr', 'luiz@fapi.edu.br', 'Amy', 'Um maluco do pedaço.', 1, 0, '2018-10-19', '2018-11-13 17:33:14'),
 (3, 'kvolanski', 'kevin@fapi.edu.br', '12345', 'O cara da TI', 2, 0, '2018-10-19', NULL);
 
@@ -335,7 +357,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT for table `log_acesso`
 --
 ALTER TABLE `log_acesso`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 --
 -- AUTO_INCREMENT for table `operador`
 --
@@ -345,12 +367,12 @@ ALTER TABLE `operador`
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `ticket_comentario`
 --
 ALTER TABLE `ticket_comentario`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
