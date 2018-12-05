@@ -131,6 +131,41 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return usuario;
 
 	}
+	
+	public static Usuario buscaPorId(int id) {
+
+		Usuario usuario = new Usuario();
+
+		try (Connection connection = Conexao.connection()) {
+
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("SELECT * FROM usuario WHERE id = ?");
+			preparedStatement.setInt(1, id);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				usuario.setId(resultSet.getInt("id"));
+				usuario.setNickname(resultSet.getString("nickname"));
+				usuario.setEmail(resultSet.getString("email"));
+				usuario.setSenha(resultSet.getString("senha"));
+				usuario.setNivelAcesso(resultSet.getInt("nivelAcesso"));
+				usuario.setBloqueado(resultSet.getBoolean("bloqueado"));
+				usuario.setDataCriacao(resultSet.getDate("dataCriacao"));
+				usuario.setUltimoAcesso(resultSet.getDate("ultimoAcesso"));
+			}
+
+			preparedStatement.executeQuery();
+
+		} catch (SQLException e) {
+
+			System.out.println("Erro de conexão: " + e.getMessage());
+
+		}
+
+		return usuario;
+
+	}
 
 	// Trocar a senha de um usuário utilizando o email como chave.
 	public static void trocaSenha(String emailUser, String novaSenha) {
@@ -195,5 +230,4 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 
 	}
-
 }

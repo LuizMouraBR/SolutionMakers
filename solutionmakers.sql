@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Dez-2018 às 21:37
+-- Generation Time: 06-Dez-2018 às 00:34
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -178,7 +178,25 @@ INSERT INTO `log_acesso` (`id`, `usuario_email`, `acao_user`, `data_hora`) VALUE
 (94, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:23:02'),
 (95, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:29:32'),
 (96, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:32:22'),
-(97, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:35:01');
+(97, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:35:01'),
+(98, 'luiz@fapi.edu.br', 'Login', '2018-12-05 18:42:15'),
+(99, 'luiz@fapi.edu.br', 'Login', '2018-12-05 19:08:37'),
+(100, 'luiz@fapi.edu.br', 'Login', '2018-12-05 19:11:50'),
+(101, 'luiz@fapi.edu.br', 'Login', '2018-12-05 19:31:37'),
+(102, 'luiz@fapi.edu.br', 'Login', '2018-12-05 19:33:59'),
+(103, 'luiz@fapi.edu.br', 'Login', '2018-12-05 20:12:30'),
+(104, 'admin@fapi.edu.br', 'Login', '2018-12-05 20:16:04'),
+(105, 'luiz@fapi.edu.br', 'Login', '2018-12-05 20:17:36'),
+(106, 'luiz@fapi.edu.br', 'Login', '2018-12-05 20:20:16'),
+(107, 'luiz@fapi.edu.br', 'Login', '2018-12-05 20:36:37'),
+(108, 'admin@fapi.edu.br', 'Login', '2018-12-05 21:09:53'),
+(109, 'admin@fapi.edu.br', 'Login', '2018-12-05 21:12:14'),
+(110, 'admin@fapi.edu.br', 'Login', '2018-12-05 21:14:08'),
+(111, 'luiz@fapi.edu.br', 'Login', '2018-12-05 21:17:13'),
+(112, 'admin@fapi.edu.br', 'Login', '2018-12-05 21:22:28'),
+(113, 'luiz@fapi.edu.br', 'Login', '2018-12-05 21:27:00'),
+(114, 'destroy34@yahoo.com', 'Troca de Senha', '2018-12-05 21:29:08'),
+(115, 'destroy34@yahoo.com', 'Primeiro acesso de destroy34@yahoo.com', '2018-12-05 21:29:22');
 
 -- --------------------------------------------------------
 
@@ -192,6 +210,13 @@ CREATE TABLE `log_acoes` (
   `acao_user` varchar(50) NOT NULL,
   `data_hora` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `log_acoes`
+--
+
+INSERT INTO `log_acoes` (`id`, `usuario_email`, `acao_user`, `data_hora`) VALUES
+(1, 'luiz@fapi.edu.br', 'Criou ticket', '2018-12-05 19:08:00');
 
 -- --------------------------------------------------------
 
@@ -210,7 +235,9 @@ CREATE TABLE `operador` (
 --
 
 INSERT INTO `operador` (`id`, `tickets_resolvidos`, `usuario_id`) VALUES
-(1, 3, 3);
+(1, 0, 3),
+(6, 0, 4),
+(8, 0, 5);
 
 -- --------------------------------------------------------
 
@@ -312,7 +339,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nickname`, `email`, `senha`, `bio`, `nivelAcesso`, `bloqueado`, `dataCriacao`, `ultimoAcesso`) VALUES
 (1, 'admin', 'admin@fapi.edu.br', '99999', 'O manda chuva do pedaço XD', 1, 0, '2018-10-19', '2018-10-10 00:00:00'),
 (2, 'luizmourabr', 'luiz@fapi.edu.br', 'Amy', 'Um maluco do pedaço.', 1, 0, '2018-10-19', '2018-11-13 17:33:14'),
-(3, 'kvolanski', 'kevin@fapi.edu.br', '12345', 'O cara da TI', 2, 0, '2018-10-19', NULL);
+(3, 'kvolanski', 'kevin@fapi.edu.br', '12345', 'O cara da TI', 2, 0, '2018-10-19', NULL),
+(4, 'itsAmeMario', 'mario@nintendo.com', '12345', 'I''', 2, 0, '2018-12-05', NULL),
+(5, 'destroyer', 'destroy34@yahoo.com', 'master', 'master coder in C', 2, 0, '2018-12-05', '2018-12-05 21:29:22');
 
 --
 -- Indexes for dumped tables
@@ -390,17 +419,17 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT for table `log_acesso`
 --
 ALTER TABLE `log_acesso`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 --
 -- AUTO_INCREMENT for table `log_acoes`
 --
 ALTER TABLE `log_acoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `operador`
 --
 ALTER TABLE `operador`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `ticket`
 --
@@ -415,7 +444,7 @@ ALTER TABLE `ticket_comentario`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --

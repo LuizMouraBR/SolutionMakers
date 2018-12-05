@@ -21,27 +21,25 @@
 
 	<div class="form-group">
 		<div class="CadastroForm">
-
-
 			<h2>Cadastro</h2>
 			<h6>
 				Para efetuar o cadastro, você deve preencher <b>todos os campos</b>
 				abaixo.
 			</h6>
 
-			<label for="empresa">Digite o nome da Empresa:</label> 
-			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+			<label for="nomeEmpresa">Digite o nome da Empresa:</label> 
+			<input type="text" name="nomeEmpresa" class="form-control" maxlength="50" required /> 
 		
-			<label for="empresa">Digite a razão social da Empresa:</label> 
-			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+			<label for="razaoSocial">Digite a razão social da Empresa:</label> 
+			<input type="text" name="razaoSocial" class="form-control" maxlength="50" required /> 
 			
-			<label for="empresa">Digite o CNPJ da Empresa:</label> 
-			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
+			<label for="cnpj">Digite o CNPJ da Empresa:</label> 
+			<input type="text" name="cnpj" class="form-control" maxlength="50" required /> 
 		
 			<label for="empresa">Digite o endereço da Empresa:</label> 
-			<input class="form-control" rows="4" cols="50" />
+			<input type="text" class="form-control" required/>
 			
-
+			<button type="submit" class="btn btn-success">Cadastrar</button>
 		</div>
 	</div>
 

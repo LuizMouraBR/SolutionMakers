@@ -5,7 +5,7 @@
 
 <div style="margin-left: 3%; max-width: 700px;">
 
-<h1>Listar operador</h1>
+<h1>Funções operador</h1>
 
 </div>
 
