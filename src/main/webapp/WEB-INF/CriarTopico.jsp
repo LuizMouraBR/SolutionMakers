@@ -23,8 +23,8 @@
 		
 		<input type="submit" class="btn btn-success" value="Criar ticket"/>
 		
-		<input type="hidden" value="luizmourabr" name="usuarioNick"/>
-		<input type="hidden" value="1" name="usuarioNivelAcesso"/>
+		<input type="hidden" value="${usuarioEmSessao.nickname}" name="usuarioNick"/>
+		<input type="hidden" value="${usuarioEmSessao.nivelAcesso}" name="usuarioNivelAcesso"/>
 		<input type="hidden" name="acao" value="criarTopico">
 	</form>
 </div>
