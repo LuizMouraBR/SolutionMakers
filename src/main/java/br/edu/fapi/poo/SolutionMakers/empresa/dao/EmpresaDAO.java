@@ -6,7 +6,5 @@ import br.edu.fapi.poo.SolutionMakers.empresa.model.Empresa;
 
 public interface EmpresaDAO {
 	
-	Empresa buscaEmpresa(Empresa empresa);
-	
 	List<Empresa> listarTodos();
 }
