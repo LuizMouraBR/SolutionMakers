@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.edu.fapi.poo.SolutionMakers.conexao.Conexao;
 import br.edu.fapi.poo.SolutionMakers.operacoes.ColetorData;
+import br.edu.fapi.poo.SolutionMakers.operador.model.Operador;
 import br.edu.fapi.poo.SolutionMakers.usuario.dao.UsuarioDAO;
 import br.edu.fapi.poo.SolutionMakers.usuario.model.Usuario;
 
@@ -265,4 +267,37 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 		return listUsers;
 	}
+	
+	public static int criarUsuario(String nickname, String email,String bio) {
+
+		try (Connection connection = Conexao.connection()) {
+
+		
+
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"INSERT INTO `usuario` VALUES (null,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, nickname);
+			preparedStatement.setString(2, email);
+			preparedStatement.setString(3, "12345");
+			preparedStatement.setString(4, bio);
+			preparedStatement.setInt(5, 4);
+			preparedStatement.setBoolean(6, false);
+			preparedStatement.setString(7, ColetorData.datetime());
+			preparedStatement.setDate(8, null);
+
+			preparedStatement.executeUpdate();
+			ResultSet res = preparedStatement.getGeneratedKeys();
+			int result = 0;
+			if (res.first()) {
+				result = res.getInt(1);
+			}
+			return result;
+
+		} catch (SQLException e) {
+			System.out.println("Erro de conexão: " + e.getMessage());
+		}
+		return 0;
+	}
+	
+	
 }
