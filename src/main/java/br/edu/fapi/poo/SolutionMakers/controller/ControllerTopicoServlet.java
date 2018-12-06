@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.resposta.model.Resposta;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.impl.TopicoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
 
@@ -65,7 +66,7 @@ public class ControllerTopicoServlet extends HttpServlet {
 			int usuarioId = Integer.parseInt(usuario);
 			int usuarioNivelAcesso = Integer.parseInt(usuarioNivelAcessoStr);
 			
-			RespostaDAOImpl.adicionarResposta(conteudo,usuarioNick,topicoId,usuarioId, usuarioNivelAcesso);
+			RespostaDAOImpl.adicionarRespostaTICKET(conteudo,usuarioNick,topicoId,usuarioId, usuarioNivelAcesso);
 						
 			TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
 			Topico topico = topicodaoimpl.buscaPorID(topicoId);
@@ -96,6 +97,25 @@ public class ControllerTopicoServlet extends HttpServlet {
 			
 			req.getRequestDispatcher("pages/ViewTopico.jsp").forward(req, resp);
 			
+		}
+		else if("editarResposta".equalsIgnoreCase(acao)) {
+			String respostaIdSrt = req.getParameter("respostaId");
+			int respostaId = Integer.parseInt(respostaIdSrt);
+			Resposta resposta = RespostaDAOImpl.buscaPorIdTICKET(respostaId);
+			req.setAttribute("resposta", resposta);
+			req.getRequestDispatcher("WEB-INF/EditarRespostaT.jsp").forward(req, resp);
+		}
+		else if("editarRespostaConfirm".equalsIgnoreCase(acao)) {
+			String conteudo = req.getParameter("conteudo");
+			String editorIdStr = req.getParameter("editorId");
+			String respostaIdStr = req.getParameter("respostaId");
+			
+			int editorId = Integer.parseInt(editorIdStr);
+			int respostaId = Integer.parseInt(respostaIdStr);
+			
+			RespostaDAOImpl.editarRespostaTICKET(conteudo,editorId,respostaId);
+						
+			req.getRequestDispatcher("index").forward(req, resp);
 		}
 		else {
 			resp.sendRedirect("index");

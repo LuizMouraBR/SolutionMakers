@@ -7,7 +7,7 @@
 
 <h1>Editando resposta de <c:out value="${resposta.usuarioNick}"></c:out> </h1>
 
-<form action="/SolutionMakers/controller?">
+<form action="/SolutionMakers/controllerDiscussao?">
 
 	<textarea class="form-control" name="conteudo" placeholder="${resposta.conteudo}">${resposta.conteudo}</textarea>
 

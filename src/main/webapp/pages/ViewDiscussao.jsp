@@ -15,86 +15,54 @@
 	margin: 12px;
 }
 </style>
-<title><c:out value="${topico.titulo}"></c:out> - SolutionMakers</title>
+<title><c:out value="${discussao.titulo}"></c:out> - SolutionMakers</title>
 </head>
 
 <div style="margin-left: 3%; max-width: 700px;">
 <br>
 	<h2>
-		<c:out value="${topico.titulo}"></c:out>
+		<c:out value="${discussao.titulo}"></c:out>
 	</h2>
 	<div>
 		<form action="/SolutionMakers/controller?" method="get" >
 			<div style="padding: 5px 5px;">
 				<i>por 
-					<input class="btn btn-dark" type="submit" value="${topico.autor_nickname}">
+					<input class="btn btn-dark" type="submit" value="${discussao.autor_nickname}">
 					
-					<c:if test="${topico.autor_nivelAcesso == 2}">
+					<c:if test="${discussao.autor_nivelAcesso == 2}">
 						<span class="btn btn-success">Operador</span>
 					</c:if>
 					
-					<c:if test="${topico.autor_nivelAcesso == 3}">
+					<c:if test="${discussao.autor_nivelAcesso == 3}">
 						<span class="btn btn-primary">Cliente</span>
 					</c:if>
 					
-					<c:if test="${topico.autor_nivelAcesso == 4}">
+					<c:if test="${discussao.autor_nivelAcesso == 4}">
 						<span class="btn btn-warning">Usuário</span>
 					</c:if>
 					
 				</i>
 			</div>
-			<input type="hidden" value="${topico.autor_nickname}" name="userNick">
+			<input type="hidden" value="${discussao.autor_nickname}" name="userNick">
 			<input type="hidden" name="acao" value="conta">
 		</form>
 	</div>
 	<hr>
 	<p>
-		<c:out value="${topico.descricao}"></c:out>
+		<c:out value="${discussao.descricao}"></c:out>
 	</p>
 	<br>
-
-	<p>Palavras chave:</p>
-
-	<div class="pChave">
-		<c:if test="${topico.pChave1 != NULL}">
-			<form method="get" action="/SolutionMakers/controller">
-				<!-- <input type="hidden" value="buscaPalavraChave" name="acao"> -->
-				<button name="pChave" class="btn btn-info" type="submit" value="${topico.pChave1}">
-					<c:out value="${topico.pChave1}"></c:out>
-				</button>
-			</form>
-		</c:if>
-		-
-		<c:if test="${topico.pChave2 != NULL}">
-			<form method="get">
-				<input type="hidden" value="buscaPalavraChave" name="acao">
-				<button name="pChave" class="btn btn-info" value="${topico.pChave2}">
-					<c:out value="${topico.pChave2}"></c:out>
-				</button>
-			</form>
-		</c:if>
-		-
-		<c:if test="${topico.pChave3 != NULL}">
-			<form method="get">
-				<input type="hidden" value="buscaPalavraChave" name="acao">
-				<button name="pChave" class="btn btn-info" value="${topico.pChave3}">
-					<c:out value="${topico.pChave3}"></c:out>
-				</button>
-			</form>
-		</c:if>
-	</div>
-
 <hr>
 	<h2>Respostas:</h2>
 	
-	<c:if test="${empty topico.respostas}">
+	<c:if test="${empty discussao.respostas}">
 		<div class="alert alert-danger">
 			<p> Não há respostas ainda...			</p>
 			Seja o primeiro :)
 		</div>
 	</c:if>
 	
-	<c:forEach var="resposta" items="${topico.respostas}">
+	<c:forEach var="resposta" items="${discussao.respostas}">
 		<div class="cardResposta">
 		<p style="color: black;">
 		<span class="glyphicon glyphicon-pencil"></span>
@@ -123,7 +91,7 @@
 			<input type="hidden" name="acao" value="conta">
 		</form>
 		<c:if test="${usuarioEmSessao.nivelAcesso == 1 && resposta.usuarioNivelAcesso == 2}">
-			<form action="/SolutionMakers/controllerTopico?" method="get">
+			<form action="/SolutionMakers/controllerDiscussao?" method="get">
 			<div style="padding: 5px 5px;">
 				<input class="btn btn-warning" type="submit" value="Editar resposta">
 			</div>
@@ -151,11 +119,11 @@ Envie sua resposta:
 <br><br>
 
 <c:if test="${usuarioEmSessao != null}">
-		<form action="/SolutionMakers/controllerTopico?">
+		<form action="/SolutionMakers/controllerDiscussao?">
 			<textarea placeholder="Digite sua resposta aqui" class="form-control" name="conteudo"></textarea><br>
 			<button type="submit" class="btn btn-success">Enviar resposta</button>
 			<input type="hidden" value="${usuarioEmSessao.nickname}" name="usuarioNick"/>
-			<input type="hidden" value="${topico.id}" name="topicoId"/>
+			<input type="hidden" value="${discussao.id}" name="discussaoId"/>
 			<input type="hidden" value="${usuarioEmSessao.id}" name="usuarioId"/>
 			<input type="hidden" value="${usuarioEmSessao.nivelAcesso}" name="usuarioNivelAcesso"/>
 			<input type="hidden" name="acao" value="resposta">

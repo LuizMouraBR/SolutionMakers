@@ -97,7 +97,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
 					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					topico.setRespostas(respostaDAOImpl.listarTodasTICKET(topico.getId()));	
 					
 				}
 
@@ -142,7 +142,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
 					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					topico.setRespostas(respostaDAOImpl.listarTodasTICKET(topico.getId()));	
 					
 					listTopicos.add(topico);
 				}
@@ -177,7 +177,7 @@ public class TopicoDAOImpl implements TopicoDAO{
 					topico.setpChave2(resultSet.getString("pChave2"));
 					topico.setpChave3(resultSet.getString("pChave3"));
 					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					topico.setRespostas(respostaDAOImpl.listarTodasTICKET(topico.getId()));	
 					
 					listTopicos.add(topico);
 				}

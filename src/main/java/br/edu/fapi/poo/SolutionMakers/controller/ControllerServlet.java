@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.fapi.poo.SolutionMakers.discussao.dao.impl.DiscussaoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.logAcesso.dao.impl.LogAcessoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.logAcesso.model.LogAcesso;
 import br.edu.fapi.poo.SolutionMakers.logAcoes.dao.impl.LogAcoesDAOImpl;
@@ -35,6 +36,11 @@ public class ControllerServlet extends HttpServlet {
 			TopicoDAOImpl topicodaoimpl = new TopicoDAOImpl();
 			req.setAttribute("topicos", topicodaoimpl.listarTodos("maisRecentes"));
 			req.getRequestDispatcher("pages/topicos.jsp").forward(req, resp);
+		}
+		else if ("listarDiscussoes".equalsIgnoreCase(acao)) {
+			DiscussaoDAOImpl discussaodaoimpl = new DiscussaoDAOImpl();
+			req.setAttribute("discussoes", discussaodaoimpl.listarTodos("maisRecentes"));
+			req.getRequestDispatcher("pages/discussoes.jsp").forward(req, resp);
 		}
 		else if("conta".equalsIgnoreCase(acao)) {
 			
@@ -82,26 +88,13 @@ public class ControllerServlet extends HttpServlet {
 		else if("FuncoesOperador".equalsIgnoreCase(acao)) {
 			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);
 		}
-		else if("editarResposta".equalsIgnoreCase(acao)) {
-			String respostaIdSrt = req.getParameter("respostaId");
-			int respostaId = Integer.parseInt(respostaIdSrt);
-			Resposta resposta = RespostaDAOImpl.buscaPorId(respostaId);
-			req.setAttribute("resposta", resposta);
-			req.getRequestDispatcher("WEB-INF/EditarResposta.jsp").forward(req, resp);
-		}
-		else if("editarRespostaConfirm".equalsIgnoreCase(acao)) {
-			String conteudo = req.getParameter("conteudo");
-			String editorIdStr = req.getParameter("editorId");
-			String respostaIdStr = req.getParameter("respostaId");
-			
-			int editorId = Integer.parseInt(editorIdStr);
-			int respostaId = Integer.parseInt(respostaIdStr);
-			
-			RespostaDAOImpl.editarResposta(conteudo,editorId,respostaId);
-						
-			req.getRequestDispatcher("index").forward(req, resp);
-		}
 		else if("UsuariosBloqueados".equalsIgnoreCase(acao)) {
+					
+			UsuarioDAOImpl usuariodaoimpl = new UsuarioDAOImpl();
+			List<Usuario> usuarios = usuariodaoimpl.buscaBloqueados();
+			
+			req.setAttribute("listUsuariosBloq", usuarios);
+			
 			req.getRequestDispatcher("WEB-INF/UsuariosBloqueados.jsp").forward(req, resp);
 		}
 		else if("LogAcesso".equalsIgnoreCase(acao)) {

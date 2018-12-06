@@ -6,6 +6,5 @@ import br.edu.fapi.poo.SolutionMakers.resposta.model.Resposta;
 
 public interface RespostaDAO {
 
-	public List<Resposta> listarTodas(int topicoId);
 	
 }

@@ -230,4 +230,39 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 
 	}
+	public List<Usuario> buscaBloqueados() {
+		List<Usuario> listUsers = new ArrayList<>();
+
+		try (Connection connection = Conexao.connection()) {
+
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from usuario where bloqueado = true");
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				Usuario usuario = new Usuario();
+
+				usuario.setId(resultSet.getInt("id"));
+				usuario.setNickname(resultSet.getString("nickname"));
+				usuario.setEmail(resultSet.getString("email"));
+				usuario.setSenha(resultSet.getString("senha"));
+				usuario.setBio(resultSet.getString("bio"));
+				usuario.setNivelAcesso(resultSet.getInt("nivelAcesso"));
+				usuario.setBloqueado(resultSet.getBoolean("bloqueado"));
+				usuario.setDataCriacao(resultSet.getDate("dataCriacao"));
+				usuario.setUltimoAcesso(resultSet.getDate("ultimoAcesso"));
+
+				listUsers.add(usuario);
+
+			}
+
+			return listUsers;
+
+		} catch (SQLException e) {
+
+			System.out.println("Erro de base de dados:" + e.getMessage());
+
+		}
+		return listUsers;
+	}
 }

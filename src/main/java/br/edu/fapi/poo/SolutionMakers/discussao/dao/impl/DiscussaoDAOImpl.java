@@ -11,24 +11,23 @@ import java.util.List;
 import br.edu.fapi.poo.SolutionMakers.conexao.Conexao;
 import br.edu.fapi.poo.SolutionMakers.operacoes.ColetorData;
 import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
-import br.edu.fapi.poo.SolutionMakers.topico.dao.TopicoDAO;
-import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
+import br.edu.fapi.poo.SolutionMakers.discussao.dao.DiscussaoDAO;
+import br.edu.fapi.poo.SolutionMakers.discussao.model.Discussao;
 
-public class DiscussaoDAOImpl implements TopicoDAO{
+public class DiscussaoDAOImpl implements DiscussaoDAO{
 	
 	static RespostaDAOImpl respostaDAOImpl = new RespostaDAOImpl();
 	
-	//Buscar uma lista de tópicos (TODOS)
-	public List<Topico> listarTodos(String ordem) {
+	public List<Discussao> listarTodos(String ordem) {
 
-		List<Topico> listTopicos = new ArrayList<>();
+		List<Discussao> listDiscussoes = new ArrayList<>();
 
 		try (Connection connection = Conexao.connection()) {
 			
-			String preparedStmt = "select * from ticket";
+			String preparedStmt = "select * from discussao";
 			
 			if(ordem.equals("maisRecentes")) {
-				preparedStmt = "select * from ticket order by data_postagem desc";
+				preparedStmt = "select * from discussao order by data_postagem desc";
 			}else if (ordem.equals("")) {
 				
 			}
@@ -40,25 +39,21 @@ public class DiscussaoDAOImpl implements TopicoDAO{
 
 			while (resultSet.next()) {
 
-				Topico topico = new Topico();
+				Discussao discussao = new Discussao();
 				
-				topico.setId(resultSet.getInt("id"));
-				topico.setTitulo(resultSet.getString("titulo"));
-				topico.setDescricao(resultSet.getString("descricao"));
-				topico.setAutor_nickname(resultSet.getString("autor_nickname"));
-				topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
-				topico.setData_postagem(resultSet.getString("data_postagem"));
-				topico.setResolvido(resultSet.getBoolean("resolvido"));
-				topico.setpChave1(resultSet.getString("pChave1"));
-				topico.setpChave2(resultSet.getString("pChave2"));
-				topico.setpChave3(resultSet.getString("pChave3"));
-				topico.setQtdRespostas(getQtdRespostas(topico.getId()));
+				discussao.setId(resultSet.getInt("id"));
+				discussao.setTitulo(resultSet.getString("titulo"));
+				discussao.setDescricao(resultSet.getString("descricao"));
+				discussao.setAutor_nickname(resultSet.getString("autor_nickname"));
+				discussao.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
+				discussao.setData_postagem(resultSet.getString("data_postagem"));
+				discussao.setQtdRespostas(getQtdRespostas(discussao.getId()));
 				
-				listTopicos.add(topico);
+				listDiscussoes.add(discussao);
 
 			}
 
-			return listTopicos;
+			return listDiscussoes;
 
 		} catch (SQLException e) {
 
@@ -67,41 +62,37 @@ public class DiscussaoDAOImpl implements TopicoDAO{
 		}
 
 		
-		return listTopicos;
+		return listDiscussoes;
 
 	}
 	
 	//Buscar um tópico em específico
-	public Topico buscaPorID(int id) {
+	public Discussao buscaPorID(int id) {
 
-			int topicoID = (id);
+			int discussaoID = (id);
 
 			try (Connection connection = Conexao.connection()) {
 
-				PreparedStatement preparedStatement = connection.prepareStatement("select * from ticket where id ="+topicoID);
+				PreparedStatement preparedStatement = connection.prepareStatement("select * from discussao where id ="+discussaoID);
 				ResultSet resultSet = preparedStatement.executeQuery();
 
-				Topico topico = new Topico();
-				topico.setId(topicoID);
+				Discussao discussao = new Discussao();
+				discussao.setId(discussaoID);
 				
 				
 				while (resultSet.next()) {
 					
-					topico.setTitulo(resultSet.getString("titulo"));
-					topico.setDescricao(resultSet.getString("descricao"));
-					topico.setAutor_nickname(resultSet.getString("autor_nickname"));
-					topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
-					topico.setData_postagem(resultSet.getString("data_postagem"));
-					topico.setResolvido(resultSet.getBoolean("resolvido"));
-					topico.setpChave1(resultSet.getString("pChave1"));
-					topico.setpChave2(resultSet.getString("pChave2"));
-					topico.setpChave3(resultSet.getString("pChave3"));
-					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					discussao.setTitulo(resultSet.getString("titulo"));
+					discussao.setDescricao(resultSet.getString("descricao"));
+					discussao.setAutor_nickname(resultSet.getString("autor_nickname"));
+					discussao.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
+					discussao.setData_postagem(resultSet.getString("data_postagem"));
+					discussao.setQtdRespostas(getQtdRespostas(discussao.getId()));
+					discussao.setRespostas(respostaDAOImpl.listarTodasDISCUSSAO(discussao.getId()));	
 					
 				}
 
-				return topico;
+				return discussao;
 
 			} catch (SQLException e) {
 
@@ -112,13 +103,13 @@ public class DiscussaoDAOImpl implements TopicoDAO{
 	
 	
 	//Buscar uma lista de tópicos (POR PALAVRA CHAVE ou TAG)
-		public List<Topico> buscaPorTag(String tag) {
+		public List<Discussao> buscaPorTag(String tag) {
 
-			List<Topico> listTopicos = new ArrayList<>();
+			List<Discussao> listDiscussoes = new ArrayList<>();
 
 			try (Connection connection = Conexao.connection()) {
 
-				PreparedStatement preparedStatement = connection.prepareStatement("select * from ticket where titulo LIKE ? OR descricao LIKE ? OR pChave1 LIKE ? OR pChave2 LIKE ? OR pChave2 LIKE?",PreparedStatement.RETURN_GENERATED_KEYS);
+				PreparedStatement preparedStatement = connection.prepareStatement("select * from discussao where titulo LIKE ? OR descricao LIKE ? OR pChave1 LIKE ? OR pChave2 LIKE ? OR pChave2 LIKE?",PreparedStatement.RETURN_GENERATED_KEYS);
 				preparedStatement.setString(1, "%"+tag+"%");
 				preparedStatement.setString(2, "%"+tag+"%");
 				preparedStatement.setString(3, "%"+tag+"%");
@@ -129,73 +120,65 @@ public class DiscussaoDAOImpl implements TopicoDAO{
 
 				while (resultSet.next()) {
 
-					Topico topico = new Topico();
+					Discussao discussao = new Discussao();
 					
-					topico.setId(resultSet.getInt("id"));
-					topico.setTitulo(resultSet.getString("titulo"));
-					topico.setDescricao(resultSet.getString("descricao"));
-					topico.setAutor_nickname(resultSet.getString("autor_nickname"));	
-					topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
-					topico.setData_postagem(resultSet.getString("data_postagem"));
-					topico.setResolvido(resultSet.getBoolean("resolvido"));
-					topico.setpChave1(resultSet.getString("pChave1"));
-					topico.setpChave2(resultSet.getString("pChave2"));
-					topico.setpChave3(resultSet.getString("pChave3"));
-					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					discussao.setId(resultSet.getInt("id"));
+					discussao.setTitulo(resultSet.getString("titulo"));
+					discussao.setDescricao(resultSet.getString("descricao"));
+					discussao.setAutor_nickname(resultSet.getString("autor_nickname"));	
+					discussao.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
+					discussao.setData_postagem(resultSet.getString("data_postagem"));
+					discussao.setQtdRespostas(getQtdRespostas(discussao.getId()));
+					discussao.setRespostas(respostaDAOImpl.listarTodasDISCUSSAO(discussao.getId()));	
 					
-					listTopicos.add(topico);
+					listDiscussoes.add(discussao);
 				}
-				return listTopicos;
+				return listDiscussoes;
 			} catch (SQLException e) {
 				System.out.println("Erro de conexão: "+e.getMessage());
 			}
-			return listTopicos;
+			return listDiscussoes;
 		}
 		
-		public List<Topico> listarUltimos(int qtd) {
+		public List<Discussao> listarUltimos(int qtd) {
 
-			List<Topico> listTopicos = new ArrayList<>();
+			List<Discussao> listDiscussoes = new ArrayList<>();
 
 			try (Connection connection = Conexao.connection()) {
 
-				PreparedStatement preparedStatement = connection.prepareStatement("select * from ticket order by data_postagem desc limit " + qtd);
+				PreparedStatement preparedStatement = connection.prepareStatement("select * from discussao order by data_postagem desc limit " + qtd);
 				ResultSet resultSet = preparedStatement.executeQuery();
 
 				while (resultSet.next()) {
 
-					Topico topico = new Topico();
+					Discussao discussao = new Discussao();
 					
-					topico.setId(resultSet.getInt("id"));
-					topico.setTitulo(resultSet.getString("titulo"));
-					topico.setDescricao(resultSet.getString("descricao"));
-					topico.setAutor_nickname(resultSet.getString("autor_nickname"));
-					topico.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
-					topico.setData_postagem(resultSet.getString("data_postagem"));
-					topico.setResolvido(resultSet.getBoolean("resolvido"));
-					topico.setpChave1(resultSet.getString("pChave1"));
-					topico.setpChave2(resultSet.getString("pChave2"));
-					topico.setpChave3(resultSet.getString("pChave3"));
-					topico.setQtdRespostas(getQtdRespostas(topico.getId()));
-					topico.setRespostas(respostaDAOImpl.listarTodas(topico.getId()));	
+					discussao.setId(resultSet.getInt("id"));
+					discussao.setTitulo(resultSet.getString("titulo"));
+					discussao.setDescricao(resultSet.getString("descricao"));
+					discussao.setAutor_nickname(resultSet.getString("autor_nickname"));
+					discussao.setAutor_nivelAcesso(resultSet.getInt("autor_nivelAceso"));
+					discussao.setData_postagem(resultSet.getString("data_postagem"));
+					discussao.setQtdRespostas(getQtdRespostas(discussao.getId()));
+					discussao.setRespostas(respostaDAOImpl.listarTodasDISCUSSAO(discussao.getId()));	
 					
-					listTopicos.add(topico);
+					listDiscussoes.add(discussao);
 				}
-				return listTopicos;
+				return listDiscussoes;
 			} catch (SQLException e) {
 				System.out.println("Erro de conexão: "+e.getMessage());
 			}
-			return listTopicos;
+			return listDiscussoes;
 		}
 		
 		public int getQtdRespostas(int id) {
 
-			int topicoID = (id);
+			int discussaoID = (id);
 			int qtdRespostas = 0;
 
 			try (Connection connection = Conexao.connection()) {
 
-				PreparedStatement preparedStatement = connection.prepareStatement("SELECT count(*) FROM `ticket_comentario` WHERE topico_id = "+topicoID);
+				PreparedStatement preparedStatement = connection.prepareStatement("SELECT count(*) FROM `discussao_comentario` WHERE discussao_id = "+discussaoID);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				
 				while (resultSet.next()) {
@@ -212,22 +195,19 @@ public class DiscussaoDAOImpl implements TopicoDAO{
 			}
 		return 0;
 	}
-	public static int criarTopico(String titulo, String descricao, String autorNickname, int autorNivelAcesso, String pChave1, String pChave2, String pChave3) {
+	public static int criarDiscussao(String titulo, String descricao, String autorNickname, int autorNivelAcesso) {
 
 		try (Connection connection = Conexao.connection()) {
 
 			String dataPostagem = ColetorData.datetime();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"INSERT INTO `ticket` VALUES (null,?,?,?,?,?,0,?,?,?,0)", Statement.RETURN_GENERATED_KEYS);
+					"INSERT INTO `discussao` VALUES (null,?,?,?,?,?,0,?,?,?,0)", Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, titulo);
 			preparedStatement.setString(2, descricao);
 			preparedStatement.setString(3, autorNickname);
 			preparedStatement.setInt(4, autorNivelAcesso);
 			preparedStatement.setString(5, dataPostagem);
-			preparedStatement.setString(6, pChave1);
-			preparedStatement.setString(7, pChave2);
-			preparedStatement.setString(8, pChave3);
 
 			preparedStatement.executeUpdate();
 			ResultSet res = preparedStatement.getGeneratedKeys();
