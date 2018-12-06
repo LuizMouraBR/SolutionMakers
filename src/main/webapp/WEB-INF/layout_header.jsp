@@ -48,7 +48,7 @@
 						<form style="float: left;" action="/SolutionMakers/controllerTopico?" method="get">
 							<input class="w3-bar-item w3-button w3-mobile" type="submit" value="Criar Ticket">							
 							<input type="hidden" value="${usuarioEmSessao.nickname}" name="userNick">
-							<input type="hidden" name="acao" value="criarTopico">
+							<input type="hidden" name="acao" value="telaTopico">
 						</form>
 					</c:if>
 					<form style="float: left;" action="/SolutionMakers/controllerDiscussao?" method="get">

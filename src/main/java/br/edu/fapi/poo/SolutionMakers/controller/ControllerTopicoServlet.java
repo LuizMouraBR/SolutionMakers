@@ -116,6 +116,11 @@ public class ControllerTopicoServlet extends HttpServlet {
 			RespostaDAOImpl.editarRespostaTICKET(conteudo,editorId,respostaId);
 						
 			req.getRequestDispatcher("index").forward(req, resp);
+		}else if ("telaTopico".equalsIgnoreCase(acao)){
+			
+			
+			req.getRequestDispatcher("WEB-INF/CriarTopico.jsp").forward(req, resp);
+			
 		}
 		else {
 			resp.sendRedirect("index");
