@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +84,7 @@ body {
 
 	<c:if test="${not empty erro}">
 		<div class="alert alert-danger">
-			<strong>Senhas não coincidem</strong>
+			<strong>Senhas nÃ£o coincidem</strong>
 			<c:out value="${erro}"></c:out>
 		</div>
 	</c:if>
@@ -93,11 +93,11 @@ body {
 		<form action="TrocaSenha" method="post"
 			style="max-width: 500px; margin: auto">
 			<h2>
-				Olá
+				OlÃ¡
 				<c:out value="${email}"></c:out>
 			</h2>
 			<p>
-				Este é o primeiro acesso que você faz a sua <b>conta</b>. Por favor,
+				Este Ã© o primeiro acesso que vocÃª faz a sua <b>conta</b>. Por favor,
 				insira uma nova <b>senha</b>.
 			</p>
 

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <br>
 
@@ -10,7 +10,7 @@
 <form method="get" action="/SolutionMakers/controller?">
 	<button type="submit" class="btn btn-info" name="acao" value="AdicionarOperador">Adicionar operador</button>
 	<button type="submit" class="btn btn-info" name="acao" value="ListarOperador">Listar operadores</button>
-	<button type="submit" class="btn btn-info" name="acao" value="FuncoesOperador">Funções de operador</button>
+	<button type="submit" class="btn btn-info" name="acao" value="FuncoesOperador">FunÃ§Ãµes de operador</button>
 </form>
 
 

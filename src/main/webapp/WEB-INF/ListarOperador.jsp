@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <style>
 
@@ -32,7 +32,7 @@ tr:nth-child(even) {
     <th>ID</th>
     <th>Operador</th>
     <th>Tickets Resolvidos</th>
-    <th>Ações</th>
+    <th>AÃ§Ãµes</th>
   </tr>
 
   <c:forEach var="operador" items="${listOperador}">

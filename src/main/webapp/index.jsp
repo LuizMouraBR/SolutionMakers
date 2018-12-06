@@ -1,6 +1,7 @@
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <head>
 <title>SolutionMakers - Bem vindo(a)</title>
 <style>
@@ -28,17 +29,17 @@
 <div class="pageContent">
 	<div class="row">
 	
-	<!-- Conte˙do em destaque -->
+	<!-- Conte√∫do em destaque -->
 	  <div class="col-sm-9">
 	  
 		<h1>Acontecendo atualmente... <c:out value="${data}"></c:out> </h1>
 		<br>
 		  
 		<div class="cardPrincipal">
-		<h3>Bancos digitais s„o seguros? Veja o que dizem os especialistas</h3>
+		<h3>Bancos digitais s√£o seguros? Veja o que dizem os especialistas</h3>
 		<hr>
 		<p>
-			O mundo das empresas de tecnologia financeira, as fintechs, sofreu um susto na sexta-feira (4), diante das notÌcias de que o Banco Central determinou a liquidaÁ„o extrajudicial do banco comercial Neon, parceiro da fintech de mesmo...
+			O mundo das empresas de tecnologia financeira, as fintechs, sofreu um susto na sexta-feira (4), diante das not√≠cias de que o Banco Central determinou a liquida√ß√£o extrajudicial do banco comercial Neon, parceiro da fintech de mesmo...
 		</p>
 		<form action="https://economia.uol.com.br/noticias/redacao/2018/05/05/bancos-digitais-sao-seguros-veja-o-que-dizem-os-especialistas.htm" target="_blank">
 			<input type="submit" value="Ver mais" class="btn btn-info">
@@ -47,10 +48,10 @@
 		<br>
 		
 		<div class="cardPrincipal">
-		<h3>Tudo o que vocÍ precisa saber sobre as novas placas de vÌdeo NVidia</h3>
+		<h3>Tudo o que voc√™ precisa saber sobre as novas placas de v√≠deo NVidia</h3>
 		<hr>
 		<p>
-			Faz bastante tempo, mas depois de anunciar a arquitetura Pascal em 2014 e lanÁar as GTX 1070 e 1080 em maio de 2016, a Nvidia finalmente lanÁou uma nova placa gr·fica de topo de linha para gamers. Diga oi para as novas GeForce RTX 2070, 2080 e 2080 Ti. Logo de cara, o nome das novas GPU da empresa indicam algumas grandes mudanÁas. A 2080 Ti traz a nova ger...
+			Faz bastante tempo, mas depois de anunciar a arquitetura Pascal em 2014 e lan√ßar as GTX 1070 e 1080 em maio de 2016, a Nvidia finalmente lan√ßou uma nova placa gr√°fica de topo de linha para gamers. Diga oi para as novas GeForce RTX 2070, 2080 e 2080 Ti. Logo de cara, o nome das novas GPU da empresa indicam algumas grandes mudan√ßas. A 2080 Ti traz a nova ger...
 		</p>
 		<form action="https://gizmodo.uol.com.br/placas-video-nvidia-rtx/" target="_blank">
 			<input type="submit" value="Ver mais" class="btn btn-info">
@@ -59,10 +60,10 @@
 		<br>
 		
 		<div class="cardPrincipal">
-		<h3>SpaceX lanÁa 64 satÈlites de uma vez</h3>
+		<h3>SpaceX lan√ßa 64 sat√©lites de uma vez</h3>
 		<hr>
 		<p>
-			     Washington, 3 dez 2018 (AFP) - A SpaceX lanÁou seu foguete Falcon 9 nesta segunda-feira (3), enviando uma carga incomum ao espaÁo - 64 satÈlites ao mesmo tempo, um recorde dos EUA. A empresa chefiada pelo bilion·rio americano Elon Musk registrou mais um marco em sua tentativa de tornar os foguetes mais reutiliz·veis, como os aviıes: o lanÁamento usou um propulsor reciclado pela tercei...
+			     Washington, 3 dez 2018 (AFP) - A SpaceX lan√ßou seu foguete Falcon 9 nesta segunda-feira (3), enviando uma carga incomum ao espa√ßo - 64 sat√©lites ao mesmo tempo, um recorde dos EUA. A empresa chefiada pelo bilion√°rio americano Elon Musk registrou mais um marco em sua tentativa de tornar os foguetes mais reutiliz√°veis, como os avi√µes: o lan√ßamento usou um propulsor reciclado pela tercei...
 		</p>
 		<form action="https://noticias.uol.com.br/ciencia/ultimas-noticias/afp/2018/12/03/spacex-lanca-64-satelites-de-uma-vez.htm" target="_blank">
 			<input type="submit" value="Ver mais" class="btn btn-info">
@@ -93,7 +94,7 @@
 		<c:if test="${empty topicos}">
 		
 			<div class="alert alert-danger">
-				<b>Erro de conex„o com a base de dados.</b>
+				<b>Erro de conex√£o com a base de dados.</b>
 				<p><small>Ou nenhum ticket foi inserido.</small></p>
 			</div>
 		</c:if>

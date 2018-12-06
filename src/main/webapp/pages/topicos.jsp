@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 
 				<c:if test="${topico.resolvido == false}">
 					<p
-						style="border-radius: 5px; float: right; background-color: #ff1a1a; padding: 5px 5px;">Não
+						style="border-radius: 5px; float: right; background-color: #ff1a1a; padding: 5px 5px;">NÃ£o
 						resolvido</p>
 				</c:if>
 

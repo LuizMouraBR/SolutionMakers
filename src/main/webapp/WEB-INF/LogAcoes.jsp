@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <br>
 <style>
@@ -24,13 +24,13 @@ tr:nth-child(even) {
 
 <div style="margin-left: 3%; max-width: 700px;">
 
-<h1>Log de ações</h1>
+<h1>Log de aÃ§Ãµes</h1>
 
 <table>
   <tr>
     <th>ID</th>
-    <th>Email do usuário</th>
-    <th>Ação</th>
+    <th>Email do usuÃ¡rio</th>
+    <th>AÃ§Ã£o</th>
     <th>Data e hora</th>
   </tr>
 

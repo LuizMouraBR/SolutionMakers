@@ -1,8 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 
 <head>
-<title>Você buscou por: <c:out value="${busca}"></c:out> -
+<title>VocÃª buscou por: <c:out value="${busca}"></c:out> -
 	SolutionMakers
 </title>
 </head>
@@ -10,14 +12,14 @@
 <div style="margin-left: 3%;">
 
 	<h3 id="minhaBusca">
-		Você buscou por
+		VocÃª buscou por
 		<c:out value="${busca}"></c:out>
 		:
 	</h3>
 
 
 	<c:if test="${empty topicos}">
-		<h2 class="alert alert-danger">Sua busca não retornou nenhum
+		<h2 class="alert alert-danger">Sua busca nÃ£o retornou nenhum
 			resultado. =/</h2>
 	</c:if>
 
@@ -38,7 +40,7 @@
 
 				<c:if test="${topico.resolvido == false}">
 					<p
-						style="border-radius: 5px; float: right; background-color: #ff1a1a; padding: 5px 5px;">Não
+						style="border-radius: 5px; float: right; background-color: #ff1a1a; padding: 5px 5px;">NÃ£o
 						resolvido</p>
 				</c:if>
 

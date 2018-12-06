@@ -1,12 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 
 <br><br>
 <div style="margin-left: 3%; margin-right: 3%; max-width: 700px;">
 	<div>
-		<h2>NÛs somos a Solution Makers...</h2>
+		<h2>N√≥s somos a Solution Makers...</h2>
 		
-		<p>Toda empresa sÈria e bem intencionada, valoriza esses recursos para a construÁ„o de seu sucesso. A relaÁ„o eficiente entre os recursos humanos, materiais e financeiros apÛia-se no bom emprego da Miss„o, Vis„o e Valores de uma organizaÁ„o. Assim como a elaboraÁ„o, a divulgaÁ„o destes princÌpios È de suma import‚ncia no sucesso de uma instituiÁ„o perante o mercado, prolonga sua vida e eleva seus bons resultados.</p>
+		<p>Toda empresa s√©ria e bem intencionada, valoriza esses recursos para a constru√ß√£o de seu sucesso. A rela√ß√£o eficiente entre os recursos humanos, materiais e financeiros ap√≥ia-se no bom emprego da Miss√£o, Vis√£o e Valores de uma organiza√ß√£o. Assim como a elabora√ß√£o, a divulga√ß√£o destes princ√≠pios √© de suma import√¢ncia no sucesso de uma institui√ß√£o perante o mercado, prolonga sua vida e eleva seus bons resultados.</p>
 	
 	<br>
 	

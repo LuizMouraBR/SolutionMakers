@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <head>
@@ -38,7 +40,7 @@
 					</c:if>
 					
 					<c:if test="${discussao.autor_nivelAcesso == 4}">
-						<span class="btn btn-warning">Usuário</span>
+						<span class="btn btn-warning">UsuÃ¡rio</span>
 					</c:if>
 					
 				</i>
@@ -57,7 +59,7 @@
 	
 	<c:if test="${empty discussao.respostas}">
 		<div class="alert alert-danger">
-			<p> Não há respostas ainda...			</p>
+			<p> NÃ£o hÃ¡ respostas ainda...			</p>
 			Seja o primeiro :)
 		</div>
 	</c:if>
@@ -134,7 +136,7 @@ Envie sua resposta:
 
 <c:if test="${usuarioEmSessao == null}">
 	<div class="alert alert-warning">
-		Você precisa <a href="/SolutionMakers/pages/login.jsp" style="color: blue;">fazer login</a> para poder responder a este ticket.<br>
+		VocÃª precisa <a href="/SolutionMakers/pages/login.jsp" style="color: blue;">fazer login</a> para poder responder a este ticket.<br>
 	</div>
 
 </c:if>

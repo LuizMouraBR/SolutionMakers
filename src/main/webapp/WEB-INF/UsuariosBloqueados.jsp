@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br>
@@ -25,13 +25,13 @@ tr:nth-child(even) {
 
 <div style="margin-left: 3%; max-width: 700px;">
 
-<h1>Usu·rios bloqueados</h1>
+<h1>Usu√°rios bloqueados</h1>
 
 
 <table>
   <tr>
     <th>ID</th>
-    <th>Email do usu·rio</th>
+    <th>Email do usu√°rio</th>
   </tr>
 
   <c:forEach var="user" items="${listUsuariosBloq}">

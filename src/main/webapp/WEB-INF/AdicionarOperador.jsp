@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 <br>
 <style>
@@ -21,10 +21,10 @@
 
 	<div class="form-group">
 		<div class="CadastroForm">
-		<h2>Digite os dados de usuário: </h2>
+		<h2>Digite os dados de usuÃ¡rio: </h2>
 		
 			<h6>
-				Para efetuar o cadastro, você deve preencher <b>todos os campos</b>
+				Para efetuar o cadastro, vocÃª deve preencher <b>todos os campos</b>
 				abaixo.
 			</h6>
 

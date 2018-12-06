@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/layout_header.jsp"%>
 
@@ -25,7 +27,7 @@
 
 			<h2>Cadastro</h2>
 			<h6>
-				Para efetuar o cadastro, você deve preencher <b>todos os campos</b>
+				Para efetuar o cadastro, vocÃª deve preencher <b>todos os campos</b>
 				abaixo.
 			</h6>
 
@@ -45,7 +47,7 @@
 				<b>Erro</b> As senhas devem coincidir.
 			</div>
 			
-			<label for="nickname">Digite uma breve descrição sobre o usuário:</label> 
+			<label for="nickname">Digite uma breve descriÃ§Ã£o sobre o usuÃ¡rio:</label> 
 			<textarea class="form-control" rows="4" cols="50"></textarea>
 			
 			<label for="email">Digite seu e-mail:</label> 

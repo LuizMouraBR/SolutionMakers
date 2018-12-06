@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/layout_header.jsp"%>
 
@@ -25,20 +27,20 @@
 
 			<h2>Cadastro</h2>
 			<h6>
-				Para efetuar o cadastro, você deve preencher <b>todos os campos</b>
+				Para efetuar o cadastro, vocÃª deve preencher <b>todos os campos</b>
 				abaixo.
 			</h6>
 
 			<label for="empresa">Digite o nome da Empresa:</label> 
 			<input type="text" name="nomeEmpresa" class="form-control" maxlength="20" required /> 
 		
-			<label for="empresa">Digite a razão social da Empresa:</label> 
+			<label for="empresa">Digite a razÃ£o social da Empresa:</label> 
 			<input type="text" name="razaoSocial" class="form-control" maxlength="20" required /> 
 			
 			<label for="empresa">Digite o CNPJ da Empresa:</label> 
 			<input type="text" name="cnpj" class="form-control" maxlength="20" required /> 
 		
-			<label for="empresa">Digite o endereço da Empresa:</label> 
+			<label for="empresa">Digite o endereÃ§o da Empresa:</label> 
 			<input type="text" name="endereco" class="form-control" maxlength="20" required /> 
 			
 			<input type="submit" class="btn btn-success" value="Criar Empresa"/>

@@ -1,24 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/layout_header.jsp"%>
 
 <div style="margin-left: 3%; margin-right: 3%; max-width: 700px;">
 	<br>
-	<h1>Deixar uma sugestão</h1>
+	<h1>Deixar uma sugestÃ£o</h1>
 	
-	<p>Ficamos felizes que você esteja disposto(a) a nos ajudar com seu importante feedback :)</p>
+	<p>Ficamos felizes que vocÃª esteja disposto(a) a nos ajudar com seu importante feedback :)</p>
 	
 	<form method="post" class="form-group">
 	
-		<label for="nome">Digite um título a sua sugestão:</label>
-		<input type="text" name="nome" class="form-control" placeholder="Ex: Implementar um sistema de identificação por voz"/>
+		<label for="nome">Digite um tÃ­tulo a sua sugestÃ£o:</label>
+		<input type="text" name="nome" class="form-control" placeholder="Ex: Implementar um sistema de identificaÃ§Ã£o por voz"/>
 		<br>
 		
-		<label for="nome">Digite a sugestão (ou sugestões) por extenso:</label>
-		<textarea class="form-control" placeholder="Explique de forma clara todos os pontos de sua sugestão." name="descricao"></textarea>
+		<label for="nome">Digite a sugestÃ£o (ou sugestÃµes) por extenso:</label>
+		<textarea class="form-control" placeholder="Explique de forma clara todos os pontos de sua sugestÃ£o." name="descricao"></textarea>
 		<br>
 		
 		<small>Agradecemos seu feedback!</small> <br>
-		<input type="submit" class="btn btn-success" value="Enviar sugestão"/>
+		<input type="submit" class="btn btn-success" value="Enviar sugestÃ£o"/>
 	</form>
 </div>
 
