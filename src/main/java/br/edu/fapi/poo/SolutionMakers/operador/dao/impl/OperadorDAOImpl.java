@@ -100,4 +100,40 @@ public class OperadorDAOImpl implements OperadorDAO{
 
 	}
 	
+	public static void excluirOperador(int usuarioId) {
+
+		try (Connection connection = Conexao.connection()) {
+					
+			//deletar da table OPERADOR
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"DELETE FROM `operador` WHERE usuario_id = ?", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setInt(1, usuarioId);
+
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			System.out.println("Erro de conexão: " + e.getMessage());
+
+		}
+		
+		try (Connection connection = Conexao.connection()) {
+			
+			//deletar da table USUARIO
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"DELETE FROM `usuario` WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setInt(1, usuarioId);
+
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			System.out.println("Erro de conexão: " + e.getMessage());
+
+		}
+		
+		
+
+	}
+	
 }

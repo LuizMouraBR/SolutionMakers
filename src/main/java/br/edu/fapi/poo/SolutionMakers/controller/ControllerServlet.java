@@ -63,7 +63,13 @@ public class ControllerServlet extends HttpServlet {
 			req.getRequestDispatcher("WEB-INF/GerenciarOperadores.jsp").forward(req, resp);
 		}
 		else if("ExcluirOperador".equalsIgnoreCase(acao)) {
-			req.getRequestDispatcher("WEB-INF/ExcluirOperador.jsp").forward(req, resp);
+			String usuarioIds = req.getParameter("usuarioId");
+			
+			int usuarioId = Integer.parseInt(usuarioIds);
+			
+			OperadorDAOImpl.excluirOperador(usuarioId);
+			
+			req.getRequestDispatcher("WEB-INF/GerenciarOperadores.jsp").forward(req, resp);
 		}
 		else if("ListarOperador".equalsIgnoreCase(acao)) {
 			OperadorDAOImpl operadorimpl = new OperadorDAOImpl();
