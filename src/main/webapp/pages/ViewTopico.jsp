@@ -132,9 +132,16 @@
 		</form>
 		</c:if>
 		
-		<i style="float: right;">
-			<c:out value="${resposta.dataPostagem}"></c:out>
-		</i>
+		<c:if test="${not resposta.editada}">
+			<i style="float: right;">
+				<c:out value="${resposta.dataPostagem}"></c:out>
+			</i>
+		</c:if>
+		<c:if test="${resposta.editada}">
+			<i style="float: right;">
+				(Editada em <c:out value="${resposta.dataEdicao})"></c:out>
+			</i>
+		</c:if>
 		</div>
 		<br>
 	</c:forEach>

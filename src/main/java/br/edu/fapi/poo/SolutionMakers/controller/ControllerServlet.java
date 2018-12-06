@@ -15,6 +15,8 @@ import br.edu.fapi.poo.SolutionMakers.logAcoes.dao.impl.LogAcoesDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.logAcoes.model.LogAcoes;
 import br.edu.fapi.poo.SolutionMakers.operador.dao.impl.OperadorDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.operador.model.Operador;
+import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.resposta.model.Resposta;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.impl.TopicoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
 import br.edu.fapi.poo.SolutionMakers.usuario.dao.impl.UsuarioDAOImpl;
@@ -79,6 +81,25 @@ public class ControllerServlet extends HttpServlet {
 		}
 		else if("FuncoesOperador".equalsIgnoreCase(acao)) {
 			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);
+		}
+		else if("editarResposta".equalsIgnoreCase(acao)) {
+			String respostaIdSrt = req.getParameter("respostaId");
+			int respostaId = Integer.parseInt(respostaIdSrt);
+			Resposta resposta = RespostaDAOImpl.buscaPorId(respostaId);
+			req.setAttribute("resposta", resposta);
+			req.getRequestDispatcher("WEB-INF/EditarResposta.jsp").forward(req, resp);
+		}
+		else if("editarRespostaConfirm".equalsIgnoreCase(acao)) {
+			String conteudo = req.getParameter("conteudo");
+			String editorIdStr = req.getParameter("editorId");
+			String respostaIdStr = req.getParameter("respostaId");
+			
+			int editorId = Integer.parseInt(editorIdStr);
+			int respostaId = Integer.parseInt(respostaIdStr);
+			
+			RespostaDAOImpl.editarResposta(conteudo,editorId,respostaId);
+						
+			req.getRequestDispatcher("index").forward(req, resp);
 		}
 		else if("UsuariosBloqueados".equalsIgnoreCase(acao)) {
 			req.getRequestDispatcher("WEB-INF/UsuariosBloqueados.jsp").forward(req, resp);
