@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.fapi.poo.SolutionMakers.cliente.dao.impl.ClienteDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.cliente.model.Cliente;
 import br.edu.fapi.poo.SolutionMakers.discussao.dao.impl.DiscussaoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.empresa.dao.impl.EmpresaDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.empresa.model.Empresa;
@@ -80,11 +81,26 @@ public class ControllerServlet extends HttpServlet {
 			
 			req.getRequestDispatcher("WEB-INF/GerenciarOperadores.jsp").forward(req, resp);
 		}
+		else if("ExcluirCliente".equalsIgnoreCase(acao)) {
+			String usuarioIds = req.getParameter("usuarioId");
+			
+			int usuarioId = Integer.parseInt(usuarioIds);
+			
+			ClienteDAOImpl.excluirCliente(usuarioId);
+			
+			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);
+		}
 		else if("ListarOperador".equalsIgnoreCase(acao)) {
 			OperadorDAOImpl operadorimpl = new OperadorDAOImpl();
 			List<Operador> listOperador = operadorimpl.listarTodos();
 			req.setAttribute("listOperador", listOperador);
 			req.getRequestDispatcher("WEB-INF/ListarOperador.jsp").forward(req, resp);
+		}
+		else if("ListarCliente".equalsIgnoreCase(acao)) {
+			ClienteDAOImpl clienteimpl = new ClienteDAOImpl();
+			List<Cliente> listCliente = clienteimpl.listarTodos();
+			req.setAttribute("listCliente", listCliente);
+			req.getRequestDispatcher("WEB-INF/ListarCliente.jsp").forward(req, resp);
 		}
 		else if("FuncoesOperador".equalsIgnoreCase(acao)) {
 			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);

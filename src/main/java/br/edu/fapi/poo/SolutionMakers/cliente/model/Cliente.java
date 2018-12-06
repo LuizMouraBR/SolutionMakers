@@ -7,6 +7,7 @@ public class Cliente {
 	private String rg;
 	private String cpf;
 	private String pis;
+	private String empresaNome;
 	
 	private int empresaId;
 	private int usuarioId;
@@ -52,6 +53,12 @@ public class Cliente {
 	}
 	public void setUsuarioId(int usuarioId) {
 		this.usuarioId = usuarioId;
+	}
+	public String getEmpresaNome() {
+		return empresaNome;
+	}
+	public void setEmpresaNome(String empresaNome) {
+		this.empresaNome = empresaNome;
 	}
 
 

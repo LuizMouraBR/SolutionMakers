@@ -21,7 +21,7 @@ public class ClienteDAOImpl implements ClienteDAO{
 
 		try (Connection connection = Conexao.connection()) {
 			
-			String preparedStmt = "select * from cliente";
+			String preparedStmt = "select *,empresa.nome_fantasia from cliente inner join empresa on cliente.empresa_id = empresa.id";
 			
 			PreparedStatement preparedStatement;
 		
@@ -39,6 +39,7 @@ public class ClienteDAOImpl implements ClienteDAO{
 				cliente.setPis(resultSet.getString("pis"));
 				cliente.setUsuarioId(resultSet.getInt("usuario_id"));
 				cliente.setEmpresaId(resultSet.getInt("empresa_id"));
+				cliente.setEmpresaNome(resultSet.getString("nome_fantasia"));
 				
 				listClientes.add(cliente);
 

@@ -9,7 +9,7 @@
 
 <form method="get" action="/SolutionMakers/controller?">
 	<button type="submit" class="btn btn-info" name="acao" value="AdicionarCliente">Adicionar clientes</button>
-	<button type="submit" class="btn btn-info" name="acao" value="ListarClientes">Listar clientes</button>
+	<button type="submit" class="btn btn-info" name="acao" value="ListarCliente">Listar clientes</button>
 </form>
 
 </div>
