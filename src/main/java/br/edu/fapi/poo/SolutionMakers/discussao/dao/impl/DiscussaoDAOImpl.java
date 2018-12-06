@@ -202,12 +202,13 @@ public class DiscussaoDAOImpl implements DiscussaoDAO{
 			String dataPostagem = ColetorData.datetime();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"INSERT INTO `discussao` VALUES (null,?,?,?,?,?,0,?,?,?,0)", Statement.RETURN_GENERATED_KEYS);
+					"INSERT INTO `discussao` VALUES (null,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, titulo);
 			preparedStatement.setString(2, descricao);
 			preparedStatement.setString(3, autorNickname);
 			preparedStatement.setInt(4, autorNivelAcesso);
 			preparedStatement.setString(5, dataPostagem);
+			preparedStatement.setInt(6, 0);
 
 			preparedStatement.executeUpdate();
 			ResultSet res = preparedStatement.getGeneratedKeys();

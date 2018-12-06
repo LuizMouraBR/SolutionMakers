@@ -66,6 +66,7 @@ public class ControllerDiscussaoServlet extends HttpServlet {
 						
 			DiscussaoDAOImpl discussaodaoimpl = new DiscussaoDAOImpl();
 			Discussao discussao = discussaodaoimpl.buscaPorID(discussaoId);
+			DiscussaoDAOImpl.criarDiscussao(titulo, descricao, usuarioNick, usuarioNivelAcesso);
 		
 			req.setAttribute("discussao", discussao);
 			
@@ -90,6 +91,11 @@ public class ControllerDiscussaoServlet extends HttpServlet {
 			RespostaDAOImpl.editarRespostaDISCUSSAO(conteudo,editorId,respostaId);
 						
 			req.getRequestDispatcher("index").forward(req, resp);
+		}
+		else if ("telaDiscussao".equalsIgnoreCase(acao)){
+			
+			req.getRequestDispatcher("WEB-INF/CriarDiscussao.jsp").forward(req, resp);
+			
 		}
 		else {
 			resp.sendRedirect("index");
