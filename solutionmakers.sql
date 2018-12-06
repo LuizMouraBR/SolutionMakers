@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Dez-2018 às 00:34
+-- Generation Time: 06-Dez-2018 às 04:23
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -46,6 +46,56 @@ INSERT INTO `cliente` (`id`, `nome_completo`, `rg`, `cpf`, `pis`, `empresa_id`, 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `discussao`
+--
+
+CREATE TABLE `discussao` (
+  `id` int(9) NOT NULL,
+  `titulo` varchar(80) NOT NULL,
+  `descricao` varchar(1000) NOT NULL,
+  `autor_nickname` varchar(16) NOT NULL,
+  `autor_nivelAceso` int(11) DEFAULT NULL,
+  `data_postagem` datetime NOT NULL,
+  `qtdRespostas` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `discussao`
+--
+
+INSERT INTO `discussao` (`id`, `titulo`, `descricao`, `autor_nickname`, `autor_nivelAceso`, `data_postagem`, `qtdRespostas`) VALUES
+(1, 'Discussão 1', 'Um teste', 'none', 4, '2018-12-06 00:41:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `discussao_comentario`
+--
+
+CREATE TABLE `discussao_comentario` (
+  `id` int(9) NOT NULL,
+  `discussao_id` int(9) DEFAULT NULL,
+  `usuario_id` int(9) NOT NULL,
+  `usuarioNivelAcesso` int(11) DEFAULT NULL,
+  `conteudo` varchar(255) NOT NULL,
+  `isEditada` tinyint(1) DEFAULT NULL,
+  `data_postagem` datetime DEFAULT NULL,
+  `data_edicao` datetime DEFAULT NULL,
+  `editor_id` int(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `discussao_comentario`
+--
+
+INSERT INTO `discussao_comentario` (`id`, `discussao_id`, `usuario_id`, `usuarioNivelAcesso`, `conteudo`, `isEditada`, `data_postagem`, `data_edicao`, `editor_id`) VALUES
+(1, 1, 7, 2, 'testado\r\n', NULL, '2018-12-06 01:10:33', NULL, NULL),
+(2, 1, 7, 2, 'e aprovado', NULL, '2018-12-06 01:10:43', NULL, NULL),
+(3, 1, 7, 2, 'pela SM', 1, '2018-12-06 01:11:06', '2018-12-06 01:21:41', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `empresa`
 --
 
@@ -62,7 +112,8 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`id`, `nome_fantasia`, `razao_social`, `cnpj`, `endereco`) VALUES
-(1, 'DanLimpão Serviços Gerais', 'Dan Serviços Gerais EIRELLI', '0006541.258/21', 'www.danlimpao.com.br');
+(1, 'DanLimpão Serviços Gerais', 'Dan Serviços Gerais EIRELLI', '0006541.258/21', 'www.danlimpao.com.br'),
+(2, 'a', 'b', '1', '2');
 
 -- --------------------------------------------------------
 
@@ -196,7 +247,30 @@ INSERT INTO `log_acesso` (`id`, `usuario_email`, `acao_user`, `data_hora`) VALUE
 (112, 'admin@fapi.edu.br', 'Login', '2018-12-05 21:22:28'),
 (113, 'luiz@fapi.edu.br', 'Login', '2018-12-05 21:27:00'),
 (114, 'destroy34@yahoo.com', 'Troca de Senha', '2018-12-05 21:29:08'),
-(115, 'destroy34@yahoo.com', 'Primeiro acesso de destroy34@yahoo.com', '2018-12-05 21:29:22');
+(115, 'destroy34@yahoo.com', 'Primeiro acesso de destroy34@yahoo.com', '2018-12-05 21:29:22'),
+(116, 'admin@fapi.edu.br', 'Login', '2018-12-05 21:49:25'),
+(117, 'admin@fapi.edu.br', 'Login', '2018-12-05 22:00:50'),
+(118, 'luiz@fapi.edu.br', 'Login', '2018-12-05 22:02:15'),
+(119, 'luiz@fapi.edu.br', 'Login', '2018-12-05 22:25:49'),
+(120, 'admin@fapi.edu.br', 'Login', '2018-12-05 22:29:22'),
+(121, 'luiz@fapi.edu.br', 'Login', '2018-12-05 22:32:33'),
+(122, 'luiz@fapi.edu.br', 'Login', '2018-12-05 22:36:08'),
+(123, 'luiz@fapi.edu.br', 'Tentativa errada de acesso', '2018-12-05 22:42:10'),
+(124, 'luiz@fapi.edu.br', 'Login', '2018-12-05 22:42:20'),
+(125, 'luiz@fapi.edu.br', 'Login', '2018-12-05 22:44:45'),
+(126, 'luiz@fapi.edu.br', 'Login', '2018-12-05 23:10:29'),
+(127, 'luiz@fapi.edu.br', 'Login', '2018-12-05 23:11:43'),
+(128, 'luiz@fapi.edu.br', 'Login', '2018-12-05 23:32:12'),
+(129, 'admin@fapi.edu.br', 'Login', '2018-12-05 23:35:35'),
+(130, 'operador@mock.com', 'Troca de Senha', '2018-12-05 23:37:18'),
+(131, 'operador@mock.com', 'Primeiro acesso de operador@mock.com', '2018-12-05 23:37:28'),
+(132, 'luiz@fapi.edu.br', 'Login', '2018-12-06 01:01:00'),
+(133, 'operador@mock.com', 'Tentativa errada de acesso', '2018-12-06 01:07:58'),
+(134, 'operador@mock.com', 'Login', '2018-12-06 01:08:05'),
+(135, 'luiz@fapi.edu.br', 'Login', '2018-12-06 01:11:26'),
+(136, 'admin@fapi.edu.br', 'Login', '2018-12-06 01:15:11'),
+(137, 'luiz@fapi.edu.br', 'Login', '2018-12-06 01:18:04'),
+(138, 'admin@fapi.edu.br', 'Login', '2018-12-06 01:21:30');
 
 -- --------------------------------------------------------
 
@@ -236,8 +310,7 @@ CREATE TABLE `operador` (
 
 INSERT INTO `operador` (`id`, `tickets_resolvidos`, `usuario_id`) VALUES
 (1, 0, 3),
-(6, 0, 4),
-(8, 0, 5);
+(10, 0, 7);
 
 -- --------------------------------------------------------
 
@@ -290,7 +363,7 @@ CREATE TABLE `ticket_comentario` (
   `conteudo` varchar(255) NOT NULL,
   `isEditada` tinyint(1) DEFAULT NULL,
   `data_postagem` datetime DEFAULT NULL,
-  `data_edicao` date DEFAULT NULL,
+  `data_edicao` datetime DEFAULT NULL,
   `editor_id` int(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -301,18 +374,20 @@ CREATE TABLE `ticket_comentario` (
 INSERT INTO `ticket_comentario` (`id`, `topico_id`, `usuario_id`, `usuarioNivelAcesso`, `conteudo`, `isEditada`, `data_postagem`, `data_edicao`, `editor_id`) VALUES
 (1, 2, 1, 1, 'Oi mundo :)', NULL, '2018-10-22 13:13:21', NULL, NULL),
 (2, 1, 2, 1, 'Comentário 100% automático (quem me dera :/)', NULL, '2018-10-22 14:46:54', NULL, NULL),
-(3, 2, 3, 2, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
+(3, 2, 3, 2, 'dot net is a show thing', 1, '2018-10-22 14:49:23', '2018-12-06 01:22:07', 1),
 (4, 2, 3, 2, 'YOLOOOOOOOOOO', NULL, '2018-10-22 14:49:23', NULL, NULL),
-(5, 2, 3, 2, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
+(5, 2, 3, 2, 'WAKE ME UP INSIDE', 1, '2018-10-22 14:59:23', '2018-12-05 23:32:30', 2),
 (6, 2, 3, 2, 'oi', NULL, '2018-10-22 13:19:23', NULL, NULL),
-(19, 2, 3, 2, 'ASDUAHSDUASHDAUSD', NULL, '2018-10-22 14:59:23', NULL, NULL),
+(19, 2, 3, 2, 'WAKE ME UP', 1, '2018-10-22 14:59:23', '2018-12-05 23:11:58', 2),
 (20, 2, 2, 1, 'dot net >>>>> ', NULL, '2018-12-04 20:18:55', NULL, NULL),
 (21, 2, 2, 1, 'PATOS', NULL, '2018-12-04 20:21:46', NULL, NULL),
 (22, 4, 2, 1, 'vc s esqueceu de fazer a pergunta mermo kk\r\n', NULL, '2018-12-04 20:22:27', NULL, NULL),
 (23, 24, 2, 1, 'que?\r\n', NULL, '2018-12-04 22:03:53', NULL, NULL),
 (24, 22, 2, 1, 'ICollections.AllAsync = null;', NULL, '2018-12-04 22:05:26', NULL, NULL),
 (25, 3, 2, 1, 'na verdade 42 vem do Mochileiro das Galaxias que e um livro', NULL, '2018-12-04 22:14:34', NULL, NULL),
-(26, 25, 2, 1, 'Use: <<suaColecao>>.AllAsync.Remove();', NULL, '2018-12-05 17:24:03', NULL, NULL);
+(26, 25, 2, 1, 'Use: <<suaColecao>>.AllAsync.Remove();', NULL, '2018-12-05 17:24:03', NULL, NULL),
+(27, 1, 2, 1, 'asd', NULL, '2018-12-06 01:02:37', NULL, NULL),
+(28, 24, 7, 2, 'b', NULL, '2018-12-06 01:08:26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -340,8 +415,7 @@ INSERT INTO `usuario` (`id`, `nickname`, `email`, `senha`, `bio`, `nivelAcesso`,
 (1, 'admin', 'admin@fapi.edu.br', '99999', 'O manda chuva do pedaço XD', 1, 0, '2018-10-19', '2018-10-10 00:00:00'),
 (2, 'luizmourabr', 'luiz@fapi.edu.br', 'Amy', 'Um maluco do pedaço.', 1, 0, '2018-10-19', '2018-11-13 17:33:14'),
 (3, 'kvolanski', 'kevin@fapi.edu.br', '12345', 'O cara da TI', 2, 0, '2018-10-19', NULL),
-(4, 'itsAmeMario', 'mario@nintendo.com', '12345', 'I''', 2, 0, '2018-12-05', NULL),
-(5, 'destroyer', 'destroy34@yahoo.com', 'master', 'master coder in C', 2, 0, '2018-12-05', '2018-12-05 21:29:22');
+(7, 'operador', 'operador@mock.com', 'op', ' um operador', 2, 0, '2018-12-05', '2018-12-05 23:37:28');
 
 --
 -- Indexes for dumped tables
@@ -354,6 +428,18 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`),
   ADD KEY `empresa_id` (`empresa_id`),
   ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indexes for table `discussao`
+--
+ALTER TABLE `discussao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `discussao_comentario`
+--
+ALTER TABLE `discussao_comentario`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `empresa`
@@ -411,15 +497,25 @@ ALTER TABLE `usuario`
 ALTER TABLE `cliente`
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `discussao`
+--
+ALTER TABLE `discussao`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `discussao_comentario`
+--
+ALTER TABLE `discussao_comentario`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `log_acesso`
 --
 ALTER TABLE `log_acesso`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 --
 -- AUTO_INCREMENT for table `log_acoes`
 --
@@ -429,7 +525,7 @@ ALTER TABLE `log_acoes`
 -- AUTO_INCREMENT for table `operador`
 --
 ALTER TABLE `operador`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `ticket`
 --
@@ -439,12 +535,12 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT for table `ticket_comentario`
 --
 ALTER TABLE `ticket_comentario`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
