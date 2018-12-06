@@ -7,6 +7,11 @@
 
 <h1>Funções operador</h1>
 
+<form method="get" action="/SolutionMakers/controller?">
+	<button type="submit" class="btn btn-info" name="acao" value="AdicionarCliente">Adicionar clientes</button>
+	<button type="submit" class="btn btn-info" name="acao" value="ListarClientes">Listar clientes</button>
+</form>
+
 </div>
 
 <br>

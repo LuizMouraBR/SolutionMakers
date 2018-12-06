@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.fapi.poo.SolutionMakers.cliente.dao.impl.ClienteDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.discussao.dao.impl.DiscussaoDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.empresa.dao.impl.EmpresaDAOImpl;
+import br.edu.fapi.poo.SolutionMakers.empresa.model.Empresa;
 import br.edu.fapi.poo.SolutionMakers.logAcesso.dao.impl.LogAcessoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.logAcesso.model.LogAcesso;
 import br.edu.fapi.poo.SolutionMakers.logAcoes.dao.impl.LogAcoesDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.logAcoes.model.LogAcoes;
 import br.edu.fapi.poo.SolutionMakers.operador.dao.impl.OperadorDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.operador.model.Operador;
-import br.edu.fapi.poo.SolutionMakers.resposta.dao.impl.RespostaDAOImpl;
-import br.edu.fapi.poo.SolutionMakers.resposta.model.Resposta;
 import br.edu.fapi.poo.SolutionMakers.topico.dao.impl.TopicoDAOImpl;
 import br.edu.fapi.poo.SolutionMakers.topico.model.Topico;
 import br.edu.fapi.poo.SolutionMakers.usuario.dao.impl.UsuarioDAOImpl;
@@ -86,6 +87,28 @@ public class ControllerServlet extends HttpServlet {
 			req.getRequestDispatcher("WEB-INF/ListarOperador.jsp").forward(req, resp);
 		}
 		else if("FuncoesOperador".equalsIgnoreCase(acao)) {
+			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);
+		}
+		else if("AdicionarCliente".equalsIgnoreCase(acao)) {
+			EmpresaDAOImpl empresaimpl = new EmpresaDAOImpl();
+			List<Empresa> listEmpresas = empresaimpl.listarTodos();
+			req.setAttribute("empresas", listEmpresas);
+			req.getRequestDispatcher("WEB-INF/AdicionarCliente.jsp").forward(req, resp);
+		}
+		else if("adicionarClienteConfirm".equalsIgnoreCase(acao)) {
+			String nickname = req.getParameter("nickname");
+			String email = req.getParameter("email");
+			String bio = req.getParameter("bio");
+			String nomeCompleto = req.getParameter("nomeCompleto");
+			String rg = req.getParameter("rg");
+			String cpf = req.getParameter("cpf");
+			String pis = req.getParameter("pis");
+			String empresaIdStr = req.getParameter("empresaId");
+			
+			int empresaId = Integer.parseInt(empresaIdStr);
+		
+			ClienteDAOImpl.adicionarCliente(nickname,email,bio,nomeCompleto,rg,cpf,pis,empresaId);
+			
 			req.getRequestDispatcher("WEB-INF/FuncoesOperador.jsp").forward(req, resp);
 		}
 		else if("UsuariosBloqueados".equalsIgnoreCase(acao)) {

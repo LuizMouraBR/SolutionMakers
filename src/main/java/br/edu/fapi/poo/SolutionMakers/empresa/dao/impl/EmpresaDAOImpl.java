@@ -11,18 +11,8 @@ import java.util.List;
 import br.edu.fapi.poo.SolutionMakers.conexao.Conexao;
 import br.edu.fapi.poo.SolutionMakers.empresa.dao.EmpresaDAO;
 import br.edu.fapi.poo.SolutionMakers.empresa.model.Empresa;
-import br.edu.fapi.poo.SolutionMakers.operacoes.ColetorData;
-import br.edu.fapi.poo.SolutionMakers.usuario.dao.UsuarioDAO;
-import br.edu.fapi.poo.SolutionMakers.usuario.model.Usuario;
 
 public class EmpresaDAOImpl implements EmpresaDAO {
-
-	@Override
-	public Empresa buscaEmpresa(Empresa empresa) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	public List<Empresa> listarTodos() {
 		List<Empresa> listaEmpresa = new ArrayList<>();
@@ -39,13 +29,11 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 				empresa.setId(resultSet.getInt("id"));
 				empresa.setNomeFantasia(resultSet.getString("nome_fantasia"));
 				empresa.setRazaoSocial(resultSet.getString("razao_social"));
-				empresa.setCnpj(resultSet.getString("endereco"));
-				
+				empresa.setCnpj(resultSet.getString("cnpj"));
+				empresa.setEndereco(resultSet.getString("endereco"));
 				
 				listaEmpresa.add(empresa);
-
 			}
-
 			return listaEmpresa;
 
 		} catch (SQLException e) {
@@ -71,7 +59,8 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 				empresa.setId(resultSet.getInt("id"));
 				empresa.setNomeFantasia(resultSet.getString("nome_fantasia"));
 				empresa.setRazaoSocial(resultSet.getString("razao_social"));
-				empresa.setCnpj(resultSet.getString("endereco"));
+				empresa.setCnpj(resultSet.getString("cnpj"));
+				empresa.setEndereco(resultSet.getString("endereco"));
 
 			}
 
